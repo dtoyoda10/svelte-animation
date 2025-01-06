@@ -1,9 +1,18 @@
-import { ScrollOptions, OnScroll, OnScrollWithInfo } from "./types"
-import { scrollInfo } from "./track"
-import { ProgressTimeline, observeTimeline } from "./observe"
-import { supportsScrollTimeline } from "./supports"
-import { AnimationPlaybackControls } from "../../../animation/types"
+import {
+    AnimationPlaybackControls,
+    ProgressTimeline,
+    supportsScrollTimeline,
+} from "motion-dom"
 import { noop } from "motion-utils"
+import { observeTimeline } from "./observe"
+import { scrollInfo } from "./track"
+import { OnScroll, OnScrollWithInfo, ScrollOptions } from "./types"
+
+declare global {
+    interface Window {
+        ScrollTimeline: ScrollTimeline
+    }
+}
 
 declare class ScrollTimeline implements ProgressTimeline {
     constructor(options: ScrollOptions)
@@ -11,12 +20,6 @@ declare class ScrollTimeline implements ProgressTimeline {
     currentTime: null | { value: number }
 
     cancel?: VoidFunction
-}
-
-declare global {
-    interface Window {
-        ScrollTimeline: ScrollTimeline
-    }
 }
 
 function scrollTimelineFallback({
