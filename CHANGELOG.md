@@ -4,6 +4,13 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.16.1] 2024-01-08
+
+### Fixed
+
+-   Adding `displayName` to `motion` components.
+-   Ensure `press` doesn't override `tabindex` when explicitly set.
+
 ## [11.16.0] 2024-01-06
 
 ### Added
