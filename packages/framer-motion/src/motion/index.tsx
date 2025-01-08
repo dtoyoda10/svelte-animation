@@ -125,7 +125,9 @@ export function createRendererMotionComponent<
     }
 
     MotionComponent.displayName = `motion.${
-        typeof Component === "string" ? Component : `create()`
+        typeof Component === "string"
+            ? Component
+            : `create(${Component.displayName ?? Component.name ?? ""})`
     }`
 
     const ForwardRefMotionComponent = forwardRef(MotionComponent as any)
