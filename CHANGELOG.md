@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.16.4] 2024-01-09
+
+### Fixed
+
+-   Fix type of `attachTimeline` when `skipLibCheck` is disabled.
+
 ## [11.16.3] 2024-01-09
 
 ### Fixed
