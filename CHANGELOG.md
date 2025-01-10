@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.16.7] 2024-01-10
+
+### Fixed
+
+-   Fixing timelines where a string label is used as the first segment.
+
 ## [11.16.6] 2024-01-10
 
 ### Changed
