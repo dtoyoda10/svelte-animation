@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.16.6] 2024-01-10
+
+### Changed
+
+-   More movement values like `height` and `top` are now blocked by reduced motion.
+
 ## [11.16.5] 2024-01-09
 
 ### Fixed
