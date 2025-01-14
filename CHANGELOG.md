@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.18.0] 2024-01-14
+
+### Added
+
+-   Adding `animateSequence` to perform animation sequences via WAAPI for a tiny bundlesize.
+
 ## [11.17.1] 2024-01-13
 
 ### Fixed
