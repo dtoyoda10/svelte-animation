@@ -10,6 +10,10 @@ Undocumented APIs should be considered internal and may change without warning.
 
 -   Adding `animateSequence` to perform animation sequences via WAAPI for a tiny bundlesize.
 
+### Fixed
+
+-   Missing `AnimationControls` type export.
+
 ## [11.17.1] 2024-01-13
 
 ### Fixed
