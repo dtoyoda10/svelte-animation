@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.18.2] 2025-01-17
+
+### Fixed
+
+-   Animations with `transformTemplate` not hardware accelerated.
+
 ## [11.18.1] 2025-01-17
 
 ### Fixed
