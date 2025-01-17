@@ -4,6 +4,13 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [11.18.1] 2024-01-17
+
+### Fixed
+
+-   `AnimatePresence` types in React 19.
+-   SVG with `transform` not always setting styles correctly on mount.
+
 ## [11.18.0] 2024-01-14
 
 ### Added
