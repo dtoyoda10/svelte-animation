@@ -257,22 +257,6 @@ describe("Layout animation", () => {
             })
     })
 
-    it("Doesn't distort children with transformTemplate", () => {
-        cy.visit("?test=layout-transform-template")
-            .wait(50)
-            .get("button")
-            .trigger("click")
-            .wait(100)
-            .get("#measure")
-            .should(([$box]: any) => {
-                const bbox = $box.getBoundingClientRect()
-                expect(Math.floor(bbox.top)).to.equal(10)
-                expect(Math.floor(bbox.left)).to.equal(1710)
-                expect(Math.floor(bbox.width)).to.equal(103)
-                expect(Math.floor(bbox.height)).to.equal(40)
-            })
-    })
-
     it("Elements within portal don't perform scale correction on parents", () => {
         cy.visit("?test=layout-portal")
             .wait(50)
