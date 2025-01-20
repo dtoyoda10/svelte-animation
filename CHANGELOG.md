@@ -4,7 +4,13 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
-## [11.18.2] 2025-01-17
+## [12.0.0] 2025-01-20
+
+### Changed
+
+-   `press`, `hover` and `inView` now pass the target element as the first argument to the gesture start callback.
+
+## [11.18.2] 2025-01-20
 
 ### Fixed
 
