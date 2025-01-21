@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.1] 2025-01-21
+
+### Fixed
+
+-   Prevent relative animations from restarting layout animations unnecessarily.
+
 ## [12.0.0] 2025-01-20
 
 ### Changed
