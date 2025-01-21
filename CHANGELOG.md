@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.2] 2025-01-21
+
+### Fixed
+
+-   Fixed toggling between shared layout animations multiple times.
+
 ## [12.0.1] 2025-01-21
 
 ### Fixed
