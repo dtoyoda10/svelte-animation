@@ -6,15 +6,17 @@ Undocumented APIs should be considered internal and may change without warning.
 
 ## [12.0.3] 2025-01-23
 
+### Fixed
+
+-   Fixed toggling between shared layout animations multiple times.
+
 ### Added
 
 -   Added private `anchorX` prop to `AnimatePresence`.
 
-## [12.0.2] 2025-01-21
+### Changed
 
-### Fixed
-
--   Fixed toggling between shared layout animations multiple times.
+-   Simplified `useSpring` for smaller bundlesize.
 
 ## [12.0.1] 2025-01-21
 
