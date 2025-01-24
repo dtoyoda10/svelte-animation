@@ -13,6 +13,7 @@ import { microtask } from "../../frameloop/microtask"
 import { time } from "../../frameloop/sync-time"
 import { Process } from "../../frameloop/types"
 import { MotionStyle } from "../../motion/types"
+import { HTMLVisualElement } from "../../projection"
 import { isSVGElement } from "../../render/dom/utils/is-svg-element"
 import { ResolvedValues } from "../../render/types"
 import { FlatTree } from "../../render/utils/flat-tree"
@@ -1972,8 +1973,8 @@ export function createProjectionNode<I>({
                     // would be a good place to remove per frame object creation
                     if (isCSSVariable) {
                         ;(
-                            this.instance as unknown as HTMLElement
-                        ).style.setProperty(key, corrected as string)
+                            this.options.visualElement as HTMLVisualElement
+                        ).renderState.vars[key] = corrected
                     } else {
                         styles[key] = corrected
                     }
