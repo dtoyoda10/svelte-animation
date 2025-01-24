@@ -1,13 +1,13 @@
-import resolve from "@rollup/plugin-node-resolve"
-import { terser } from "rollup-plugin-terser"
-import replace from "@rollup/plugin-replace"
-import dts from "rollup-plugin-dts"
 import alias from "@rollup/plugin-alias"
+import resolve from "@rollup/plugin-node-resolve"
+import replace from "@rollup/plugin-replace"
 import path from "node:path"
+import dts from "rollup-plugin-dts"
+import preserveDirectives from "rollup-plugin-preserve-directives"
+import { terser } from "rollup-plugin-terser"
 import { fileURLToPath } from 'url'
-import pkg from "./package.json" with { type: "json"}
+import pkg from "./package.json" with { type: "json" }
 import tsconfig from "./tsconfig.json" with { type: "json" }
-import preserveDirectives from "rollup-plugin-preserve-directives";
 
 const config = {
     input: "lib/index.js",

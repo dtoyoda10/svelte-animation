@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.4] 2025-01-24
+
+### Fixed
+
+-   Fix scale correction for CSS variables.
+
 ## [12.0.3] 2025-01-23
 
 ### Fixed

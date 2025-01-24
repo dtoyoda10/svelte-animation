@@ -1948,7 +1948,7 @@ export function createProjectionNode<I>({
             for (const key in scaleCorrectors) {
                 if (valuesToRender[key] === undefined) continue
 
-                const { correct, applyTo } = scaleCorrectors[key]
+                const { correct, applyTo, isCSSVariable } = scaleCorrectors[key]
 
                 /**
                  * Only apply scale correction to the value if we have an
@@ -1967,7 +1967,16 @@ export function createProjectionNode<I>({
                         styles[applyTo[i]] = corrected
                     }
                 } else {
-                    styles[key] = corrected
+                    // If this is a CSS variable, set it directly on the instance.
+                    // Replacing this function from creating styles to setting them
+                    // would be a good place to remove per frame object creation
+                    if (isCSSVariable) {
+                        ;(
+                            this.instance as unknown as HTMLElement
+                        ).style.setProperty(key, corrected as string)
+                    } else {
+                        styles[key] = corrected
+                    }
                 }
             }
 
