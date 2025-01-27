@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.6] 2025-01-27
+
+### Fixed
+
+-   Discard layout projection snapshots if 0x0.
+
 ## [12.0.5] 2025-01-24
 
 ### Fixed
