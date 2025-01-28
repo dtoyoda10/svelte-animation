@@ -137,6 +137,12 @@ export abstract class VisualElement<
     ): void
 
     /**
+     * This method is called when a transform property is bound to a motion value.
+     * It's currently used to measure SVG elements when a new transform property is bound.
+     */
+    onBindTransform?(): void
+
+    /**
      * If the component child is provided as a motion value, handle subscriptions
      * with the renderer-specific VisualElement.
      */
@@ -447,6 +453,10 @@ export abstract class VisualElement<
         }
 
         const valueIsTransform = transformProps.has(key)
+
+        if (valueIsTransform && this.onBindTransform) {
+            this.onBindTransform()
+        }
 
         const removeOnChange = value.on(
             "change",

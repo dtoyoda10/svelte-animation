@@ -128,7 +128,6 @@ export function animateSubject<O extends Object>(
             }
 
             const visualElement = visualElementStore.get(thisSubject)!
-
             const transition = { ...options }
 
             /**

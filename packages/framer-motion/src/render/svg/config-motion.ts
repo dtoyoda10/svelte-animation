@@ -9,7 +9,7 @@ import { isSVGTag } from "./utils/is-svg-tag"
 import { renderSVG } from "./utils/render"
 import { scrapeMotionValuesFromProps as scrapeSVGProps } from "./utils/scrape-motion-values"
 
-function updateSVGDimensions(
+export function updateSVGDimensions(
     instance: SVGElement,
     renderState: SVGRenderState
 ) {

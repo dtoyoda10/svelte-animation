@@ -117,4 +117,16 @@ describe("SVG measures", () => {
                 expect($path.style.transformOrigin).to.equal("20px 20px")
             })
     })
+
+    it("Measure SVG and renders on mount when encountering new transforms", () => {
+        cy.visit("?test=svg-animate-transform")
+            .wait(200)
+            .get("path")
+            .should(([$path]: any) => {
+                expect($path.style.transform).to.equal(
+                    "translateX(5px) translateY(5px)"
+                )
+                expect($path.style.transformOrigin).to.equal("20px 20px")
+            })
+    })
 })

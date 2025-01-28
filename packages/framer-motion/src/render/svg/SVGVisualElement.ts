@@ -1,3 +1,4 @@
+import { frame } from "../../frameloop/frame"
 import { MotionProps, MotionStyle } from "../../motion/types"
 import { createBox } from "../../projection/geometry/models"
 import { IProjectionNode } from "../../projection/node/types"
@@ -9,6 +10,7 @@ import { getDefaultValueType } from "../dom/value-types/defaults"
 import { transformProps } from "../html/utils/keys-transform"
 import { ResolvedValues } from "../types"
 import { VisualElement } from "../VisualElement"
+import { updateSVGDimensions } from "./config-motion"
 import { SVGRenderState } from "./types"
 import { buildSVGAttrs } from "./utils/build-attrs"
 import { camelCaseAttributes } from "./utils/camel-case-attrs"
@@ -49,6 +51,18 @@ export class SVGVisualElement extends DOMVisualElement<
         visualElement: VisualElement
     ) {
         return scrapeMotionValuesFromProps(props, prevProps, visualElement)
+    }
+
+    updateDimensions = () => {
+        if (this.current && !this.renderState.dimensions) {
+            updateSVGDimensions(this.current, this.renderState)
+        }
+    }
+
+    onBindTransform() {
+        if (this.current && !this.renderState.dimensions) {
+            frame.postRender(this.updateDimensions)
+        }
     }
 
     build(
