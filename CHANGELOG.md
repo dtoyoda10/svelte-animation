@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.7] 2025-01-28
+
+### Fixed
+
+-   Fixed SVG transform animations via `animate`.
+
 ## [12.0.6] 2025-01-27
 
 ### Fixed
