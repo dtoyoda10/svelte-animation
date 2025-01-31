@@ -10,13 +10,14 @@ import { htmlMotionConfig } from "../html/config-motion"
 import { svgMotionConfig } from "../svg/config-motion"
 import { CreateVisualElement } from "../types"
 
-type MotionComponent<T, P> = T extends keyof DOMMotionComponents
+type MotionComponent<
+    T,
+    P extends { children: any }
+> = T extends keyof DOMMotionComponents
     ? DOMMotionComponents[T]
     : React.ComponentType<
           Omit<MotionComponentProps<P>, "children"> & {
-              children?: P extends { children: infer C }
-                  ? C | MotionComponentProps<P>["children"]
-                  : MotionComponentProps<P>["children"]
+              children?: P["children"] | MotionComponentProps<P>["children"]
           }
       >
 

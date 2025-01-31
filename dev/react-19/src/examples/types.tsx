@@ -1,5 +1,18 @@
 import { motion } from "motion/react"
 import * as motionClient from "motion/react-client"
+import { ReactNode } from "react"
+
+function Component({
+    children,
+    ref,
+}: {
+    children: (p: { test: boolean }) => ReactNode
+    ref: React.Ref<HTMLDivElement>
+}) {
+    return <div ref={ref}>{children({ test: true })}</div>
+}
+
+const MotionComponent = motion.create(Component)
 
 export const App = () => {
     return (
@@ -22,6 +35,7 @@ export const App = () => {
                 onClick={(event) => event.stopPropagation()}
             ></motion.div>
             <motionClient.div onClick={(event) => event.stopPropagation()} />
+            <MotionComponent>{({ test }) => <div>{test}</div>}</MotionComponent>
             <button>Disable animation</button>
         </div>
     )
