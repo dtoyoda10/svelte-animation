@@ -1,6 +1,8 @@
-import { AnimatePresence, MotionConfig } from "framer-motion"
-import * as motion from "framer-motion/client"
-import * as m from "framer-motion/m"
+"use client"
+
+import { AnimatePresence, MotionConfig } from "motion/react"
+import * as motion from "motion/react-client"
+import * as m from "motion/react-m"
 import { forwardRef, ReactNode } from "react"
 
 const Component = forwardRef(function Component(
