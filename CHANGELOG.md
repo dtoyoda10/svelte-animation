@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.11] 2025-02-03
+
+### Fixed
+
+-   Moving `updateSVGDimensions` to its own file to help with tree-shaking.
+
 ## [12.0.10] 2025-02-03
 
 ### Fixed

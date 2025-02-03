@@ -6,28 +6,9 @@ import { SVGRenderState } from "./types"
 import { buildSVGAttrs } from "./utils/build-attrs"
 import { createSvgRenderState } from "./utils/create-render-state"
 import { isSVGTag } from "./utils/is-svg-tag"
+import { updateSVGDimensions } from "./utils/measure"
 import { renderSVG } from "./utils/render"
 import { scrapeMotionValuesFromProps as scrapeSVGProps } from "./utils/scrape-motion-values"
-
-export function updateSVGDimensions(
-    instance: SVGElement,
-    renderState: SVGRenderState
-) {
-    try {
-        renderState.dimensions =
-            typeof (instance as SVGGraphicsElement).getBBox === "function"
-                ? (instance as SVGGraphicsElement).getBBox()
-                : (instance.getBoundingClientRect() as DOMRect)
-    } catch (e) {
-        // Most likely trying to measure an unrendered element under Firefox
-        renderState.dimensions = {
-            x: 0,
-            y: 0,
-            width: 0,
-            height: 0,
-        }
-    }
-}
 
 const layoutProps = ["x", "y", "width", "height", "cx", "cy", "r"]
 
