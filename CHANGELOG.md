@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.8] 2025-02-03
+
+### Fixed
+
+-   Infer type of `children` prop for `motion.create`.
+
 ## [12.0.7] 2025-01-28
 
 ### Fixed
