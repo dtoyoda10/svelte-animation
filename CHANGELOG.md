@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.9] 2025-02-03
+
+### Fixed
+
+-   Removing React from bundle.
+
 ## [12.0.8] 2025-02-03
 
 ### Fixed
