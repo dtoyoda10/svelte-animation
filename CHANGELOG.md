@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.10] 2025-02-03
+
+### Fixed
+
+-   Providing `MotionValue` to `motion` component from `motion/react-client` entrypoint.
+
 ## [12.0.9] 2025-02-03
 
 ### Fixed
