@@ -8,7 +8,11 @@ Undocumented APIs should be considered internal and may change without warning.
 
 ### Fixed
 
--   Deprecating Motion 3D.
+-   Bug with `AnimatePresence` in React 19 strict mode.
+
+### Deprecated
+
+-   Motion 3D.
 
 ## [12.0.11] 2025-02-03
 
