@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.0.12] 2025-02-04
+
+### Fixed
+
+-   Deprecating Motion 3D.
+
 ## [12.0.11] 2025-02-03
 
 ### Fixed
