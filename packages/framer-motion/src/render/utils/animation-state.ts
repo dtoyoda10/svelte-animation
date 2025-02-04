@@ -359,9 +359,6 @@ export function createAnimationState(
         ) {
             shouldAnimate = false
         }
-        if (changedActiveType === "exit") {
-            console.log("set active", animations)
-        }
 
         isInitialRender = false
         return shouldAnimate ? animate(animations) : Promise.resolve()
