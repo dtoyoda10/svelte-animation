@@ -11,7 +11,7 @@ describe("usePresenceCustomData", () => {
             return (
                 <div
                     id="test-div"
-                    style={{ opacity: isPresent ? 0.8 : data }}
+                    style={{ opacity: isPresent ? data / 2 : data }}
                 />
             )
         }
@@ -24,7 +24,7 @@ describe("usePresenceCustomData", () => {
 
         const { container, rerender } = render(<Parent isVisible={true} />)
         expect(container.querySelector("#test-div")).toHaveStyle({
-            opacity: 0.8,
+            opacity: 0.25,
         })
 
         rerender(<Parent isVisible={false} />)
@@ -33,16 +33,15 @@ describe("usePresenceCustomData", () => {
         })
     })
 
-    test("returns null when outside AnimatePresence", () => {
-        let capturedCustomData: any = undefined
-
+    test("returns undefined when not within AnimatePresence", () => {
         const Component = () => {
-            const customData = usePresenceData()
-            capturedCustomData = customData
-            return <div />
+            const data = usePresenceData()
+            return <div id="test-div" data-value={data === undefined ? 1 : 2} />
         }
 
-        render(<Component />)
-        expect(capturedCustomData).toBeNull()
+        const { container } = render(<Component />)
+        expect(
+            container.querySelector("#test-div")?.getAttribute("data-value")
+        ).toBe("1")
     })
 })
