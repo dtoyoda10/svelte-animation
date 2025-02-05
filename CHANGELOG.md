@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.3.1] 2025-02-05
+
+### Fixed
+
+-   Correctly applying CSS variables at the end of a mini `animate` animation.
+
 ## [12.3.0] 2025-02-05
 
 ### Added
