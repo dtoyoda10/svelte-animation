@@ -6,13 +6,20 @@ export interface UseInViewOptions
     root?: RefObject<Element | null>
     once?: boolean
     amount?: "some" | "all" | number
+    initial?: boolean
 }
 
 export function useInView(
     ref: RefObject<Element | null>,
-    { root, margin, amount, once = false }: UseInViewOptions = {}
+    {
+        root,
+        margin,
+        amount,
+        once = false,
+        initial = false,
+    }: UseInViewOptions = {}
 ) {
-    const [isInView, setInView] = useState(false)
+    const [isInView, setInView] = useState(initial)
 
     useEffect(() => {
         if (!ref.current || (once && isInView)) return
