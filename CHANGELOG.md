@@ -4,11 +4,9 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
-## [12.4.2] 2025-02-07
+## [12.4.2] 2025-02-10
 
-### Fixed
-
--   Adding missing `AnimationControls` type export.
+### Unreleased
 
 ## [12.4.1] 2025-02-06
 
