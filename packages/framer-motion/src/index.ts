@@ -56,6 +56,7 @@ export {
     useAnimationControls,
 } from "./animation/hooks/use-animation"
 export { animateVisualElement } from "./animation/interfaces/visual-element"
+export { AnimationControls } from "./animation/types"
 export {
     useIsPresent,
     usePresence,
