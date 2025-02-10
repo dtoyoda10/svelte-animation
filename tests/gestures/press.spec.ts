@@ -96,6 +96,20 @@ test.describe("press events", () => {
         await expect(pressDiv).toHaveText("end")
     })
 
+    test("press doesn't handle events when element is disabled", async ({
+        page,
+    }) => {
+        const pressDiv = page.locator("#press-button-disabled")
+
+        // Start press
+        await pressDiv.dispatchEvent("pointerdown", { isPrimary: true })
+        await expect(pressDiv).not.toHaveText("start")
+
+        // Release pointer - should trigger press end
+        await page.dispatchEvent("body", "pointerup", { isPrimary: true })
+        await expect(pressDiv).not.toHaveText("end")
+    })
+
     test("press handles pointer movement correctly", async ({ page }) => {
         const pressDiv = page.locator("#press-div")
         const pressDivCancel = page.locator("#press-div-cancel")

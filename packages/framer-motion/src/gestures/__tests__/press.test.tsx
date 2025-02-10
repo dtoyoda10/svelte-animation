@@ -32,6 +32,21 @@ describe("press", () => {
         expect(press).toBeCalledTimes(1)
     })
 
+    test("press event listeners don't fire if element is disabled", async () => {
+        const press = jest.fn()
+        const Component = () => <motion.button disabled onTap={() => press()} />
+
+        const { container, rerender } = render(<Component />)
+        rerender(<Component />)
+
+        pointerDown(container.firstChild as Element)
+        pointerUp(container.firstChild as Element)
+
+        await nextFrame()
+
+        expect(press).toBeCalledTimes(0)
+    })
+
     test("global press event listeners fire", async () => {
         const press = jest.fn()
         const Component = () => (
