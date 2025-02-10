@@ -6,7 +6,9 @@ Undocumented APIs should be considered internal and may change without warning.
 
 ## [12.4.2] 2025-02-10
 
-### Unreleased
+### Fixed
+
+-   Preventing `press` from triggering when an element is disabled.
 
 ## [12.4.1] 2025-02-06
 
