@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.3] 2025-02-12
+
+### Fixed
+
+-   Restored warning for when animating more than two keyframes with a spring.
+
 ## [12.4.2] 2025-02-10
 
 ### Fixed
