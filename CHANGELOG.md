@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.4] 2025-02-18
+
+### Fixed
+
+-   Changed press, drag and pan gestures to use pointer capturing for better usage within `iframe` embeds.
+
 ## [12.4.3] 2025-02-12
 
 ### Fixed
