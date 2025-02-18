@@ -4,6 +4,11 @@ test.beforeEach(async ({ page }) => {
     await page.goto("gestures/press.html")
 })
 
+const pointerOptions = {
+    isPrimary: true,
+    pointerId: 1,
+}
+
 test.describe("press events", () => {
     // CI pointers not working well
     if (process.env.CI) {
@@ -88,11 +93,11 @@ test.describe("press events", () => {
         const pressDiv = page.locator("#press-div")
 
         // Start press
-        await pressDiv.dispatchEvent("pointerdown", { isPrimary: true })
+        await pressDiv.dispatchEvent("pointerdown", pointerOptions)
         await expect(pressDiv).toHaveText("start")
 
         // Release pointer - should trigger press end
-        await page.dispatchEvent("body", "pointerup", { isPrimary: true })
+        await pressDiv.dispatchEvent("pointerup", pointerOptions)
         await expect(pressDiv).toHaveText("end")
     })
 
@@ -102,11 +107,11 @@ test.describe("press events", () => {
         const pressDiv = page.locator("#press-button-disabled")
 
         // Start press
-        await pressDiv.dispatchEvent("pointerdown", { isPrimary: true })
+        await pressDiv.dispatchEvent("pointerdown", pointerOptions)
         await expect(pressDiv).not.toHaveText("start")
 
         // Release pointer - should trigger press end
-        await page.dispatchEvent("body", "pointerup", { isPrimary: true })
+        await pressDiv.dispatchEvent("pointerup", pointerOptions)
         await expect(pressDiv).not.toHaveText("end")
     })
 
@@ -115,12 +120,12 @@ test.describe("press events", () => {
         const pressDivCancel = page.locator("#press-div-cancel")
 
         // Start press on first element
-        await pressDiv.dispatchEvent("pointerdown", { isPrimary: true })
+        await pressDiv.dispatchEvent("pointerdown", pointerOptions)
         await expect(pressDiv).toHaveText("start")
 
         // Move pointer to second element
         await pressDivCancel.dispatchEvent("pointerenter")
-        await page.dispatchEvent("body", "pointerup", { isPrimary: true })
+        await pressDiv.dispatchEvent("pointerup", pointerOptions)
 
         // Check first element returned to blue
         const pressDivColor = await pressDiv.evaluate((el) => {
@@ -132,13 +137,15 @@ test.describe("press events", () => {
         await expect(pressDiv).toHaveText("end")
 
         // Press sequence on second element
-        await pressDivCancel.dispatchEvent("pointerdown", { isPrimary: true })
+        await pressDivCancel.dispatchEvent("pointerdown", pointerOptions)
         await expect(pressDivCancel).toHaveText("start")
-        await pressDivCancel.dispatchEvent("pointerup", { isPrimary: true })
+        await pressDivCancel.dispatchEvent("pointerup", pointerOptions)
         await expect(pressDivCancel).toHaveText("end")
-        await pressDivCancel.dispatchEvent("pointerdown", { isPrimary: true })
+        await page.mouse.move(10, 110)
+        await page.mouse.down()
         await expect(pressDivCancel).toHaveText("start")
-        await page.dispatchEvent("body", "pointerup", { isPrimary: true })
+        await page.mouse.move(1000, 1000)
+        await page.mouse.up()
         await expect(pressDivCancel).toHaveText("cancel")
     })
 
@@ -155,7 +162,7 @@ test.describe("press events", () => {
         await expect(pressDiv).not.toHaveText("start")
 
         // Release right click
-        await page.dispatchEvent("body", "pointerup", {
+        await pressDiv.dispatchEvent("pointerup", {
             button: 2,
             isPrimary: false,
         })
@@ -163,7 +170,52 @@ test.describe("press events", () => {
         // Text should still not have changed
         await expect(pressDiv).not.toHaveText("end")
     })
+
+    test("press handles window events correctly", async ({ page }) => {
+        const windowOutput = page.locator("#window-output")
+
+        // Start press on window
+        await page.mouse.move(100, 100)
+        await page.mouse.down()
+        await expect(windowOutput).toHaveValue("start")
+
+        // Release pointer inside window - should trigger press end
+        await page.mouse.up()
+        await expect(windowOutput).toHaveValue("end")
+
+        // Start another press
+        await page.mouse.down()
+        await expect(windowOutput).toHaveValue("start")
+
+        // Move pointer outside window and release - should cancel press
+        await page.mouse.move(-10, -10)
+        await page.mouse.up()
+        await expect(windowOutput).toHaveValue("cancel")
+    })
+
+    test("press handles document events correctly", async ({ page }) => {
+        const documentOutput = page.locator("#document-output")
+
+        // Start press on document
+        await page.mouse.move(100, 100)
+        await page.mouse.down()
+        await expect(documentOutput).toHaveValue("start")
+
+        // Release pointer inside document - should trigger press end
+        await page.mouse.up()
+        await expect(documentOutput).toHaveValue("end")
+
+        // Start another press
+        await page.mouse.down()
+        await expect(documentOutput).toHaveValue("start")
+
+        // Move pointer outside document and release - should cancel press
+        await page.mouse.move(-10, -10)
+        await page.mouse.up()
+        await expect(documentOutput).toHaveValue("cancel")
+    })
 })
+
 test.describe("press accessibility", () => {
     test("button", async ({ page }) => {
         const button = page.locator("#press-no-tab-index-1")

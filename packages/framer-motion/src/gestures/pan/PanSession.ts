@@ -95,7 +95,6 @@ interface PanSessionHandlers {
 
 interface PanSessionOptions {
     transformPagePoint?: TransformPoint
-    contextWindow?: (Window & typeof globalThis) | null
     dragSnapToOrigin?: boolean
 }
 
@@ -149,19 +148,10 @@ export class PanSession {
      */
     private dragSnapToOrigin: boolean
 
-    /**
-     * @internal
-     */
-    private contextWindow: PanSessionOptions["contextWindow"] = window
-
     constructor(
         event: PointerEvent,
         handlers: Partial<PanSessionHandlers>,
-        {
-            transformPagePoint,
-            contextWindow,
-            dragSnapToOrigin = false,
-        }: PanSessionOptions = {}
+        { transformPagePoint, dragSnapToOrigin = false }: PanSessionOptions = {}
     ) {
         // If we have more than one touch, don't start detecting this gesture
         if (!isPrimaryPointer(event)) return
@@ -169,7 +159,6 @@ export class PanSession {
         this.dragSnapToOrigin = dragSnapToOrigin
         this.handlers = handlers
         this.transformPagePoint = transformPagePoint
-        this.contextWindow = contextWindow || window
 
         const info = extractEventInfo(event)
         const initialInfo = transformPoint(info, this.transformPagePoint)
@@ -183,20 +172,27 @@ export class PanSession {
         onSessionStart &&
             onSessionStart(event, getPanInfo(initialInfo, this.history))
 
+        capturePointer(event, "set")
+
         this.removeListeners = pipe(
             addPointerEvent(
-                this.contextWindow,
+                event.currentTarget!,
                 "pointermove",
                 this.handlePointerMove
             ),
             addPointerEvent(
-                this.contextWindow,
+                event.currentTarget!,
                 "pointerup",
                 this.handlePointerUp
             ),
             addPointerEvent(
-                this.contextWindow,
+                event.currentTarget!,
                 "pointercancel",
+                this.handlePointerUp
+            ),
+            addPointerEvent(
+                event.currentTarget!,
+                "lostpointercapture",
                 this.handlePointerUp
             )
         )
@@ -231,6 +227,18 @@ export class PanSession {
     }
 
     private handlePointerMove = (event: PointerEvent, info: EventInfo) => {
+        if (
+            event.currentTarget instanceof Element &&
+            event.currentTarget.hasPointerCapture &&
+            event.pointerId !== undefined
+        ) {
+            try {
+                if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    return
+                }
+            } catch (e) {}
+        }
+
         this.lastMoveEvent = event
         this.lastMoveEventInfo = transformPoint(info, this.transformPagePoint)
 
@@ -239,6 +247,8 @@ export class PanSession {
     }
 
     private handlePointerUp = (event: PointerEvent, info: EventInfo) => {
+        capturePointer(event, "release")
+
         this.end()
 
         const { onEnd, onSessionEnd, resumeAnimation } = this.handlers
@@ -247,7 +257,8 @@ export class PanSession {
         if (!(this.lastMoveEvent && this.lastMoveEventInfo)) return
 
         const panInfo = getPanInfo(
-            event.type === "pointercancel"
+            event.type === "pointercancel" ||
+                event.type === "lostpointercapture"
                 ? this.lastMoveEventInfo
                 : transformPoint(info, this.transformPagePoint),
             this.history
@@ -341,4 +352,20 @@ function getVelocity(history: TimestampedPoint[], timeDelta: number): Point {
     }
 
     return currentVelocity
+}
+
+function capturePointer(event: PointerEvent, action: "set" | "release") {
+    const actionName = `${action}PointerCapture` as
+        | "setPointerCapture"
+        | "releasePointerCapture"
+
+    if (
+        event.currentTarget instanceof Element &&
+        actionName in event.currentTarget &&
+        event.pointerId !== undefined
+    ) {
+        try {
+            event.currentTarget[actionName](event.pointerId)
+        } catch (e) {}
+    }
 }

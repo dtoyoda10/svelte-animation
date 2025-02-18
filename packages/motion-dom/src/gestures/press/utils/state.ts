@@ -1,1 +1,1 @@
-export const isPressing = new WeakSet<Element>()
+export const isPressing = new WeakSet<EventTarget>()

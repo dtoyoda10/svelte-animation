@@ -3,13 +3,14 @@ import "@testing-library/jest-dom"
 // because @testing-library/react one switches out pointerEnter and pointerLeave
 import { fireEvent, getByTestId } from "@testing-library/dom"
 import { render as testRender } from "@testing-library/react"
-import { act, StrictMode, Fragment } from "react"
+import { act, Fragment, StrictMode } from "react"
 
 /**
  * Stub PointerEvent - this is so we can pass through PointerEvent.isPrimary
  */
 const pointerEventProps = ["isPrimary", "pointerType", "button"]
 class PointerEventFake extends Event {
+    pointerId?: number = 1
     constructor(type: any, props: any) {
         super(type, props)
         if (!props) return

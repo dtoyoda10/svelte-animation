@@ -22,7 +22,7 @@ export function resolveElements(
     scope?: AnimationScope,
     selectorCache?: SelectorCache
 ): Element[] {
-    if (elementOrSelector instanceof Element) {
+    if (elementOrSelector instanceof EventTarget) {
         return [elementOrSelector]
     } else if (typeof elementOrSelector === "string") {
         let root: WithQuerySelectorAll = document

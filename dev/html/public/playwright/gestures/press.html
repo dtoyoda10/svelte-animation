@@ -11,7 +11,7 @@
                 background-color: #0077ff;
             }
 
-            .box:focus {
+            .box:focus-visible {
                 background-color: #ff0000;
             }
         </style>
@@ -25,11 +25,14 @@
             press
         </button>
         <div tabindex="-1" class="box" id="press-no-tab-index-2">press</div>
+        <input type="text" id="document-output" value="" />
+        <input type="text" id="window-output" value="" />
         <script type="module" src="/src/inc.js"></script>
         <script type="module">
             const { press } = window.MotionDOM
 
-            press("#press-div", (target) => {
+            press("#press-div", (target, event) => {
+                event.stopPropagation()
                 console.log("pointer down")
                 target.innerHTML = "start"
 
@@ -52,6 +55,24 @@
             // Ensure elements with tabindex explicitly set to -1 are not reset to 0
             press("#press-no-tab-index-1", () => {})
             press("#press-no-tab-index-2", () => {})
+
+            press(window, () => {
+                document.getElementById("window-output").value = "start"
+                return (_, { success }) => {
+                    document.getElementById("window-output").value = success
+                        ? "end"
+                        : "cancel"
+                }
+            })
+
+            press(document, () => {
+                document.getElementById("document-output").value = "start"
+                return (_, { success }) => {
+                    document.getElementById("document-output").value = success
+                        ? "end"
+                        : "cancel"
+                }
+            })
         </script>
     </body>
 </html>

@@ -1,39 +1,38 @@
-import { invariant } from "motion-utils"
 import { setDragLock } from "motion-dom"
-import { PanSession, PanInfo } from "../pan/PanSession"
-import { ResolvedConstraints } from "./types"
-import { isRefObject } from "../../utils/is-ref-object"
+import { invariant } from "motion-utils"
+import { animateMotionValue } from "../../animation/interfaces/motion-value"
+import { addDomEvent } from "../../events/add-dom-event"
 import { addPointerEvent } from "../../events/add-pointer-event"
-import {
-    calcRelativeConstraints,
-    calcViewportConstraints,
-    applyConstraints,
-    rebaseAxisConstraints,
-    resolveDragElastic,
-    defaultElastic,
-    calcOrigin,
-} from "./utils/constraints"
-import type { VisualElement } from "../../render/VisualElement"
-import { MotionProps } from "../../motion/types"
-import { Axis, Point } from "../../projection/geometry/types"
-import { createBox } from "../../projection/geometry/models"
-import { eachAxis } from "../../projection/utils/each-axis"
-import { measurePageBox } from "../../projection/utils/measure"
 import { extractEventInfo } from "../../events/event-info"
-import { Transition } from "../../types"
+import { frame } from "../../frameloop"
+import { MotionProps } from "../../motion/types"
 import {
     convertBoundingBoxToBox,
     convertBoxToBoundingBox,
 } from "../../projection/geometry/conversion"
-import { LayoutUpdateData } from "../../projection/node/types"
-import { addDomEvent } from "../../events/add-dom-event"
 import { calcLength } from "../../projection/geometry/delta-calc"
+import { createBox } from "../../projection/geometry/models"
+import { Axis, Point } from "../../projection/geometry/types"
+import { LayoutUpdateData } from "../../projection/node/types"
+import { eachAxis } from "../../projection/utils/each-axis"
+import { measurePageBox } from "../../projection/utils/measure"
+import type { VisualElement } from "../../render/VisualElement"
+import { Transition } from "../../types"
+import { isRefObject } from "../../utils/is-ref-object"
 import { mixNumber } from "../../utils/mix/number"
 import { percent } from "../../value/types/numbers/units"
-import { animateMotionValue } from "../../animation/interfaces/motion-value"
-import { getContextWindow } from "../../utils/get-context-window"
-import { frame } from "../../frameloop"
 import { addValueToWillChange } from "../../value/use-will-change/add-will-change"
+import { PanInfo, PanSession } from "../pan/PanSession"
+import { ResolvedConstraints } from "./types"
+import {
+    applyConstraints,
+    calcOrigin,
+    calcRelativeConstraints,
+    calcViewportConstraints,
+    defaultElastic,
+    rebaseAxisConstraints,
+    resolveDragElastic,
+} from "./utils/constraints"
 
 export const elementDragControls = new WeakMap<
     VisualElement,
@@ -230,7 +229,6 @@ export class VisualElementDragControls {
             {
                 transformPagePoint: this.visualElement.getTransformPagePoint(),
                 dragSnapToOrigin,
-                contextWindow: getContextWindow(this.visualElement),
             }
         )
     }
