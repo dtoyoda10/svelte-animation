@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.5] 2025-02-19
+
+### Fixed
+
+-   Fixed `onClick` handlers not working inside `press` events,
+
 ## [12.4.4] 2025-02-18
 
 ### Fixed
