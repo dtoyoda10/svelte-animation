@@ -8,7 +8,7 @@ Undocumented APIs should be considered internal and may change without warning.
 
 ### Fixed
 
--   Fixed `onClick` handlers not working inside `press` events,
+-   Fixed `onClick` handlers not working inside `press` events.
 
 ## [12.4.4] 2025-02-18
 
