@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.6] 2025-02-20
+
+### Fixed
+
+-   Fixed drag gesture on child elements.
+
 ## [12.4.5] 2025-02-19
 
 ### Fixed
