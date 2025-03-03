@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.9] 2025-03-03
+
+### Fixed
+
+-   Fixed `Reorder.Item` reordering causing `lostpointercapture` event to fire.
+
 ## [12.4.8] 2025-02-26
 
 ### Fixed
