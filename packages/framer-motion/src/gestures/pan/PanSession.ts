@@ -111,6 +111,8 @@ export class PanSession {
      */
     private history: TimestampedPoint[]
 
+    private index: number
+
     /**
      * @internal
      */
@@ -193,7 +195,21 @@ export class PanSession {
             addPointerEvent(
                 event.currentTarget!,
                 "lostpointercapture",
-                this.handlePointerUp
+                (lostPointerEvent, lostPointerInfo) => {
+                    const index = getElementIndex(
+                        lostPointerEvent.currentTarget as Element
+                    )
+
+                    /**
+                     * If the pointer has lost capture because it's moved in the DOM
+                     * then we need to re-capture it.
+                     */
+                    if (index !== this.index) {
+                        capturePointer(lostPointerEvent, "set")
+                    } else {
+                        this.handlePointerUp(lostPointerEvent, lostPointerInfo)
+                    }
+                }
             )
         )
     }
@@ -227,6 +243,8 @@ export class PanSession {
     }
 
     private handlePointerMove = (event: PointerEvent, info: EventInfo) => {
+        this.index = getElementIndex(event.currentTarget as Element)
+
         if (
             event.target instanceof Element &&
             event.target.hasPointerCapture &&
@@ -352,4 +370,9 @@ function getVelocity(history: TimestampedPoint[], timeDelta: number): Point {
     }
 
     return currentVelocity
+}
+
+function getElementIndex(element: Element) {
+    if (!element.parentNode) return -1
+    return Array.from(element.parentNode.children).indexOf(element)
 }
