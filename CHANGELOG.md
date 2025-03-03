@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.10] 2025-03-03
+
+### Fixed
+
+-   Adding UMD bundles for `motion-dom` and `motion-utils`.
+
 ## [12.4.9] 2025-03-03
 
 ### Fixed
