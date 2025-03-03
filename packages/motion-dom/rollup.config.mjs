@@ -1,9 +1,9 @@
 import resolve from "@rollup/plugin-node-resolve"
 import replace from "@rollup/plugin-replace"
 import dts from "rollup-plugin-dts"
-import pkg from "./package.json" with { type: "json"}
+import preserveDirectives from "rollup-plugin-preserve-directives"
+import pkg from "./package.json" with { type: "json" }
 import tsconfig from "./tsconfig.json" with { type: "json" }
-import preserveDirectives from "rollup-plugin-preserve-directives";
 
 const config = {
     input: "lib/index.js",
