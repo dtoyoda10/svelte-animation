@@ -87,7 +87,7 @@ describe("scroll() callbacks", () => {
 })
 
 describe("scroll() animation", () => {
-    it("Updates aniamtion on first frame, before scroll event", () => {
+    it("Updates animation on first frame, before scroll event", () => {
         cy.visit("?test=scroll-animate-window")
             .wait(100)
             .get("#color")
@@ -140,6 +140,71 @@ describe("scroll() animation", () => {
                 expect(getComputedStyle($element).backgroundColor).to.equal(
                     "rgb(255, 255, 255)"
                 )
+            })
+    })
+
+    it("Correctly applies the same easing to both useAnimate and useAnimateMini", () => {
+        cy.visit("?test=scroll-default-ease").wait(100).viewport(400, 400)
+
+        // Scroll halfway down the page
+        cy.scrollTo(0, 1250)
+            .wait(200)
+            // Get all the elements we need to compare
+            .get("div")
+            .contains("mini - default")
+            .as("miniDefault")
+            .get("div")
+            .contains("animate - default")
+            .as("animateDefault")
+            .get("div")
+            .contains("mini - easeOut")
+            .as("miniEaseOut")
+            .get("div")
+            .contains("animate - easeOut")
+            .as("animateEaseOut")
+            .get("div")
+            .contains("mini - spring")
+            .as("miniSpring")
+            .get("div")
+            .contains("animate - spring")
+            .as("animateSpring")
+            // Now compare transforms
+            .then(function () {
+                const miniDefaultBounds =
+                    this.miniDefault[0].getBoundingClientRect()
+                const animateDefaultBounds =
+                    this.animateDefault[0].getBoundingClientRect()
+                const miniEaseOutBounds =
+                    this.miniEaseOut[0].getBoundingClientRect()
+                const animateEaseOutBounds =
+                    this.animateEaseOut[0].getBoundingClientRect()
+                const miniSpringBounds =
+                    this.miniSpring[0].getBoundingClientRect()
+
+                // Both default boxes should have the same position
+                expect(miniDefaultBounds.left).to.equal(
+                    animateDefaultBounds.left
+                )
+
+                // Both easeOut boxes should have the same position
+                expect(miniEaseOutBounds.left).to.equal(
+                    animateEaseOutBounds.left
+                )
+
+                // Skipping as env doesn't support linear() easing
+                // expect(miniSpringBounds.left).to.equal(animateSpringBounds.left)
+
+                // Each easing type should have different positions
+                expect(miniDefaultBounds.left).not.to.equal(
+                    miniEaseOutBounds.left
+                )
+                expect(miniDefaultBounds.left).not.to.equal(
+                    miniSpringBounds.left
+                )
+                // Skipping as env doesn't support linear() easing
+                // expect(miniEaseOutBounds.left).not.to.equal(
+                //     miniSpringBounds.left
+                // )
             })
     })
 })
