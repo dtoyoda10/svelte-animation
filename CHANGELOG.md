@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.11] 2025-03-10
+
+### Fixed
+
+-   Preventing flattening of scroll animations when `type` or `ease` are explicitly set.
+
 ## [12.4.10] 2025-03-03
 
 ### Fixed
