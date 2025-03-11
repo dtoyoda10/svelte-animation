@@ -1,14 +1,7 @@
+import { MotionGlobalConfig } from "motion-utils"
 import { motionValue } from "../"
-import { animate } from "../../animation/animate"
-import { frame, frameData } from "../../frameloop"
+import { frameData } from "../../frameloop"
 import { time } from "../../frameloop/sync-time"
-import { MotionGlobalConfig } from "../../utils/GlobalConfig"
-
-async function wait(time: number) {
-    return new Promise<void>((resolve) => {
-        setTimeout(resolve, time)
-    })
-}
 
 describe("motionValue", () => {
     test("change event is type-inferred", () => {
@@ -39,73 +32,6 @@ describe("motionValue", () => {
         expect(callback).not.toBeCalled()
         value.set(1)
         expect(callback).toBeCalledTimes(1)
-    })
-
-    test("animationStart event fires", () => {
-        const value = motionValue(0)
-        const callback = jest.fn()
-
-        value.on("animationStart", callback)
-
-        expect(callback).not.toBeCalled()
-
-        animate(value, 2)
-
-        expect(callback).toBeCalledTimes(1)
-    })
-
-    test("animationCancel event fires", () => {
-        const value = motionValue(0)
-        const callback = jest.fn()
-
-        value.on("animationCancel", callback)
-
-        expect(callback).not.toBeCalled()
-
-        animate(value, 1)
-        animate(value, 2)
-
-        expect(callback).toBeCalledTimes(1)
-    })
-
-    test("animationComplete event fires", async () => {
-        const value = motionValue(0)
-        const callback = jest.fn()
-
-        value.on("animationComplete", callback)
-
-        expect(callback).not.toBeCalled()
-
-        animate(value, 1, { duration: 0.01 })
-
-        return new Promise<void>((resolve) => {
-            setTimeout(() => {
-                expect(callback).toBeCalledTimes(1)
-                resolve()
-            }, 100)
-        })
-    })
-
-    test("When all change listeners removed, stop animation", async () => {
-        const value = motionValue(0)
-
-        const unsubscribeA = value.on("change", (latest) => latest)
-        const unsubscribeB = value.on("change", (latest) => latest)
-
-        animate(value, 100)
-
-        expect(value.isAnimating()).toEqual(true)
-
-        return new Promise<void>((resolve) => {
-            unsubscribeA()
-            expect(value.isAnimating()).toEqual(true)
-            unsubscribeB()
-
-            frame.postRender(() => {
-                expect(value.isAnimating()).toEqual(false)
-                resolve()
-            })
-        })
     })
 
     test("Velocity is calculated as zero when value is arbitrarily changed after creation", () => {
@@ -156,7 +82,6 @@ describe("MotionValue velocity calculations", () => {
 
     test("Velocity is capped to the last estimated frame when value hasn't been updated in a long time, and is then updated", () => {
         const value = motionValue(0)
-
         frameData.isProcessing = true
 
         value.set(0)
@@ -179,7 +104,7 @@ describe("MotionValue velocity calculations", () => {
         time.set(10)
         value.set(1)
         frameData.isProcessing = false
-        await wait(1000)
+        time.set(1000)
         value.set(2)
 
         expect(Math.round(value.getVelocity())).toEqual(33)
@@ -194,7 +119,7 @@ describe("MotionValue velocity calculations", () => {
         time.set(10)
         value.set(1)
         frameData.isProcessing = false
-        await wait(1000)
+        time.set(1000)
         value.set(2)
         value.set(3)
 
@@ -210,7 +135,8 @@ describe("MotionValue velocity calculations", () => {
         time.set(10)
         value.set(1)
         frameData.isProcessing = false
-        await wait(1000)
+
+        time.set(1000)
 
         expect(Math.round(value.getVelocity())).toEqual(0)
     })

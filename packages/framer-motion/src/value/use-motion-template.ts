@@ -1,4 +1,4 @@
-import { MotionValue } from "."
+import { MotionValue } from "motion-dom"
 import { useCombineMotionValues } from "./use-combine-values"
 import { isMotionValue } from "./utils/is-motion-value"
 

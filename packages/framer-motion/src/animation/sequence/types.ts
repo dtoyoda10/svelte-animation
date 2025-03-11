@@ -1,3 +1,4 @@
+import type { MotionValue } from "motion-dom"
 import {
     AnimationPlaybackOptions,
     DOMKeyframesDefinition,
@@ -8,7 +9,6 @@ import {
 } from "motion-dom"
 import { Easing } from "../../easing/types"
 import { GenericKeyframesTarget } from "../../types"
-import type { MotionValue } from "../../value"
 
 export type ObjectTarget<O> = {
     [K in keyof O]?: O[K] | GenericKeyframesTarget<O[K]>

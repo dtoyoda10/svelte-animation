@@ -1,10 +1,10 @@
-import { render } from "../../../jest.setup"
-import { useEffect } from "react";
+import { MotionValue, motionValue } from "motion-dom"
+import { useEffect } from "react"
 import { motion } from "../../"
-import { useMotionValue } from "../use-motion-value"
-import { useMotionTemplate } from "../use-motion-template"
-import { MotionValue, motionValue } from ".."
+import { render } from "../../../jest.setup"
 import { nextMicrotask } from "../../gestures/__tests__/utils"
+import { useMotionTemplate } from "../use-motion-template"
+import { useMotionValue } from "../use-motion-value"
 
 describe("useMotionTemplate", () => {
     test("sets initial value", async () => {

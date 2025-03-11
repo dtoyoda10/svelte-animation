@@ -1,14 +1,14 @@
+import { motionValue } from "motion-dom"
+import { Fragment, memo, useEffect, useState } from "react"
+import { frame, motion, MotionConfig, useMotionValue } from "../../"
 import {
     pointerDown,
     pointerEnter,
     pointerUp,
     render,
 } from "../../../jest.setup"
-import { frame, motion, MotionConfig, useMotionValue } from "../../"
-import { Fragment, useEffect, memo, useState } from "react"
-import { Variants } from "../../types"
-import { motionValue } from "../../value"
 import { nextFrame } from "../../gestures/__tests__/utils"
+import { Variants } from "../../types"
 
 const MotionFragment = motion.create(Fragment)
 

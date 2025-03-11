@@ -1,6 +1,6 @@
-import { MotionValue } from ".."
-import { isCustomValue } from "../../utils/resolve-value"
+import { MotionValue } from "motion-dom"
 import { CustomValueType } from "../../types"
+import { isCustomValue } from "../../utils/resolve-value"
 import { isMotionValue } from "./is-motion-value"
 
 /**

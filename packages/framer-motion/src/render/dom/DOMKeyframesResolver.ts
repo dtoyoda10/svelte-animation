@@ -1,5 +1,5 @@
+import { MotionValue } from "motion-dom"
 import { isNone } from "../../animation/utils/is-none"
-import { MotionValue } from "../../value"
 import { positionalKeys } from "../html/utils/keys-position"
 import { makeNoneKeyframesAnimatable } from "../html/utils/make-none-animatable"
 import {

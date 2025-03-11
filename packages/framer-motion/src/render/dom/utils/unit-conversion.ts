@@ -1,5 +1,5 @@
+import { MotionValue } from "motion-dom"
 import type { Box } from "../../../projection/geometry/types"
-import { MotionValue } from "../../../value"
 import { number } from "../../../value/types/numbers"
 import { px } from "../../../value/types/numbers/units"
 import { ValueType } from "../../../value/types/types"

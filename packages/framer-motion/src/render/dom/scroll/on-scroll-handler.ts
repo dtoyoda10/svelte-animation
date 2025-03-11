@@ -1,9 +1,9 @@
-import { warnOnce } from "../../../utils/warn-once"
+import { warnOnce } from "motion-utils"
 import { updateScrollInfo } from "./info"
 import { resolveOffsets } from "./offsets/index"
 import {
-    OnScrollInfo,
     OnScrollHandler,
+    OnScrollInfo,
     ScrollInfo,
     ScrollInfoOptions,
 } from "./types"

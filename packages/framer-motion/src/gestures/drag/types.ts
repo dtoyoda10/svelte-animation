@@ -1,10 +1,10 @@
-import { RefObject } from "../../utils/safe-react-types"
-import { PanInfo } from "../pan/PanSession"
-import { Inertia, TargetAndTransition } from "../../types"
-import { DragControls } from "./use-drag-controls"
-import { MotionValue } from "../../value"
+import { MotionValue } from "motion-dom"
 import { VariantLabels } from "../../motion/types"
 import { Axis, BoundingBox } from "../../projection/geometry/types"
+import { Inertia, TargetAndTransition } from "../../types"
+import { RefObject } from "../../utils/safe-react-types"
+import { PanInfo } from "../pan/PanSession"
+import { DragControls } from "./use-drag-controls"
 
 export type DragHandler = (
     event: MouseEvent | TouchEvent | PointerEvent,

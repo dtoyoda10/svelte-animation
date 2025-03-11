@@ -1,5 +1,4 @@
-import { ProgressTimeline } from "motion-dom"
-import { cancelFrame, frame } from "../../../frameloop"
+import { cancelFrame, frame, ProgressTimeline } from "motion-dom"
 
 type Update = (progress: number) => void
 

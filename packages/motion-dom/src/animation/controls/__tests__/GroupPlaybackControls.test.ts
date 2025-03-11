@@ -1,5 +1,5 @@
-import { GroupPlaybackControls } from "../GroupPlaybackControls"
-import { AnimationPlaybackControls } from "../types"
+import { AnimationPlaybackControls } from "../../types"
+import { GroupPlaybackControls } from "../Group"
 
 function createTestAnimationControls(
     partialControls?: Partial<AnimationPlaybackControls>

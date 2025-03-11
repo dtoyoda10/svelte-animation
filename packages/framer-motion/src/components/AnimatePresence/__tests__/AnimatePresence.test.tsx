@@ -1,4 +1,5 @@
 import { waitFor } from "@testing-library/dom"
+import { motionValue } from "motion-dom"
 import { act, createRef } from "react"
 import {
     AnimatePresence,
@@ -11,7 +12,6 @@ import {
 import { render } from "../../../../jest.setup"
 import { nextFrame } from "../../../gestures/__tests__/utils"
 import { ResolvedValues } from "../../../render/types"
-import { motionValue } from "../../../value"
 
 describe("AnimatePresence", () => {
     test("Allows initial animation if no `initial` prop defined", async () => {

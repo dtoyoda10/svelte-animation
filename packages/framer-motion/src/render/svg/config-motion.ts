@@ -1,4 +1,4 @@
-import { frame } from "../../frameloop/frame"
+import { frame } from "motion-dom"
 import { MotionComponentConfig } from "../../motion"
 import { makeUseVisualState } from "../../motion/utils/use-visual-state"
 import { transformProps } from "../html/utils/keys-transform"

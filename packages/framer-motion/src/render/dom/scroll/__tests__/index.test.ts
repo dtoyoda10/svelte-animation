@@ -1,7 +1,7 @@
-import { frame } from "../../../../frameloop"
-import { scrollInfo } from "../track"
+import { frame } from "motion-dom"
 import { scroll } from "../"
 import { ScrollOffset } from "../offsets/presets"
+import { scrollInfo } from "../track"
 import { ScrollInfo } from "../types"
 
 type Measurements = {

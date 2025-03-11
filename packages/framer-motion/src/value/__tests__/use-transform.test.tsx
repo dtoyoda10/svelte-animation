@@ -1,10 +1,10 @@
-import { render } from "../../../jest.setup"
+import { motionValue, MotionValue } from "motion-dom"
 import { useEffect } from "react"
 import { cancelFrame, frame, motion } from "../../"
+import { render } from "../../../jest.setup"
+import { nextFrame, nextMicrotask } from "../../gestures/__tests__/utils"
 import { useMotionValue } from "../use-motion-value"
 import { useTransform } from "../use-transform"
-import { MotionValue, motionValue } from ".."
-import { nextFrame, nextMicrotask } from "../../gestures/__tests__/utils"
 
 class Custom {
     value: number = 0

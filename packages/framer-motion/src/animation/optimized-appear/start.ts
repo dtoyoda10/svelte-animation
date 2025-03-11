@@ -1,15 +1,14 @@
-import { appearStoreId } from "./store-id"
+import { Batcher, MotionValue } from "motion-dom"
+import { noop } from "motion-utils"
 import { startWaapiAnimation } from "../animators/waapi"
 import { NativeAnimationOptions } from "../animators/waapi/types"
 import { optimizedAppearDataId } from "./data-id"
-import { handoffOptimizedAppearAnimation } from "./handoff"
-import { appearAnimationStore, AppearStoreEntry, appearComplete } from "./store"
-import { noop } from "motion-utils"
-import "./types"
 import { getOptimisedAppearId } from "./get-appear-id"
-import { MotionValue } from "../../value"
+import { handoffOptimizedAppearAnimation } from "./handoff"
+import { appearAnimationStore, appearComplete, AppearStoreEntry } from "./store"
+import { appearStoreId } from "./store-id"
+import "./types"
 import type { WithAppearProps } from "./types"
-import { Batcher } from "../../frameloop/types"
 
 /**
  * A single time to use across all animations to manually set startTime

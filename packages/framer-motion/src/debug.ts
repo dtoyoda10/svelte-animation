@@ -1,2 +1,2 @@
-export { recordStats } from "./stats"
-export type * from "./stats/types"
+export type * from "motion-dom"
+export { recordStats } from "motion-dom"

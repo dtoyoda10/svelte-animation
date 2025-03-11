@@ -2,6 +2,7 @@ import {
     attachTimeline,
     isGenerator,
     isWaapiSupportedEasing,
+    MotionValue,
     supportsLinearEasing,
     ValueAnimationOptions,
 } from "motion-dom"
@@ -16,7 +17,6 @@ import { circInOut } from "../../easing/circ"
 import { EasingDefinition } from "../../easing/types"
 import { DOMKeyframesResolver } from "../../render/dom/DOMKeyframesResolver"
 import { ResolvedKeyframes } from "../../render/utils/KeyframesResolver"
-import { MotionValue } from "../../value"
 import { ValueAnimationOptionsWithRenderContext } from "../types"
 import {
     BaseAnimation,

@@ -1,4 +1,4 @@
-import { MotionGlobalConfig } from "../utils/GlobalConfig"
+import { MotionGlobalConfig } from "motion-utils"
 import { frameData } from "./frame"
 
 let now: number | undefined

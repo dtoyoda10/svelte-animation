@@ -1,7 +1,4 @@
-import { frame, cancelFrame } from "../../../frameloop"
-import { frameData } from "../../../frameloop"
-import { time } from "../../../frameloop/sync-time"
-import { FrameData } from "../../../frameloop/types"
+import { cancelFrame, frame, frameData, time, type FrameData } from "motion-dom"
 import { Driver } from "./types"
 
 export const frameloopDriver: Driver = (update) => {

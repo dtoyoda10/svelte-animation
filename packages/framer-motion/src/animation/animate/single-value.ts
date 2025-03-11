@@ -1,6 +1,10 @@
-import { AnimationPlaybackControls, ValueAnimationTransition } from "motion-dom"
+import {
+    AnimationPlaybackControls,
+    motionValue as createMotionValue,
+    MotionValue,
+    ValueAnimationTransition,
+} from "motion-dom"
 import { GenericKeyframesTarget } from "../../types"
-import { motionValue as createMotionValue, MotionValue } from "../../value"
 import { isMotionValue } from "../../value/utils/is-motion-value"
 import { animateMotionValue } from "../interfaces/motion-value"
 

@@ -1,5 +1,5 @@
+import { MotionValue } from "motion-dom"
 import { resolveMotionValue } from "../utils/resolve-motion-value"
-import { MotionValue } from "../"
 
 class Test {
     mix() {

@@ -1,6 +1,6 @@
+import { motionValue } from "motion-dom"
 import { warning } from "motion-utils"
 import { RefObject, useEffect } from "react"
-import { motionValue } from "."
 import { scroll } from "../render/dom/scroll"
 import { ScrollInfoOptions } from "../render/dom/scroll/types"
 import { useConstant } from "../utils/use-constant"

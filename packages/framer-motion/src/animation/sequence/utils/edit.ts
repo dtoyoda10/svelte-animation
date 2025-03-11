@@ -1,7 +1,7 @@
 import { UnresolvedValueKeyframe } from "motion-dom"
+import { removeItem } from "motion-utils"
 import { Easing } from "../../../easing/types"
 import { getEasingForSegment } from "../../../easing/utils/get-easing-for-segment"
-import { removeItem } from "../../../utils/array"
 import { mixNumber } from "../../../utils/mix/number"
 import type { ValueSequence } from "../types"
 

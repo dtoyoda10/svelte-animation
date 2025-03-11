@@ -99,7 +99,7 @@ export default [
     m,
     sizeAnimate,
     sizeScroll,
-    sizeAnimateMini,
     domAnimation,
     domMax,
+    sizeAnimateMini,
 ]

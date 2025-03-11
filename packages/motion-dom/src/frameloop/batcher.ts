@@ -1,4 +1,4 @@
-import { MotionGlobalConfig } from "../utils/GlobalConfig"
+import { MotionGlobalConfig } from "motion-utils"
 import { stepsOrder } from "./order"
 import { createRenderStep } from "./render-step"
 import { Batcher, FrameData, Process, Steps } from "./types"

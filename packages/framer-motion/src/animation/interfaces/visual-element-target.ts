@@ -1,5 +1,8 @@
-import { AnimationPlaybackControls, getValueTransition } from "motion-dom"
-import { frame } from "../../frameloop"
+import {
+    AnimationPlaybackControls,
+    frame,
+    getValueTransition,
+} from "motion-dom"
 import { positionalKeys } from "../../render/html/utils/keys-position"
 import type { AnimationTypeState } from "../../render/utils/animation-state"
 import { setTarget } from "../../render/utils/setters"

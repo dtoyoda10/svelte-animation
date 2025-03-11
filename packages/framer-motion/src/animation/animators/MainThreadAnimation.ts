@@ -1,4 +1,5 @@
 import {
+    activeAnimations,
     calcGeneratorDuration,
     isGenerator,
     ValueAnimationOptions,
@@ -12,7 +13,6 @@ import {
     KeyframeResolver as DefaultKeyframeResolver,
     ResolvedKeyframes,
 } from "../../render/utils/KeyframesResolver"
-import { activeAnimations } from "../../stats/animation-count"
 import { clamp } from "../../utils/clamp"
 import { mix } from "../../utils/mix"
 import { pipe } from "../../utils/pipe"

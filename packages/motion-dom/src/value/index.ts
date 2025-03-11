@@ -1,9 +1,10 @@
-import { AnimationPlaybackControls, TransformProperties } from "motion-dom"
+import { SubscriptionManager, velocityPerSecond, warnOnce } from "motion-utils"
+import {
+    AnimationPlaybackControls,
+    TransformProperties,
+} from "../animation/types"
 import { frame } from "../frameloop"
 import { time } from "../frameloop/sync-time"
-import { SubscriptionManager } from "../utils/subscription-manager"
-import { velocityPerSecond } from "../utils/velocity-per-second"
-import { warnOnce } from "../utils/warn-once"
 
 export type Transformer<T> = (v: T) => T
 
@@ -133,7 +134,6 @@ export class MotionValue<V = any> {
 
     /**
      * Tracks whether this value should be removed
-     * @internal
      */
     liveStyle?: boolean
 
@@ -142,8 +142,6 @@ export class MotionValue<V = any> {
      * @param config - Optional configuration options
      *
      * -  `transformer`: A function to transform incoming values with.
-     *
-     * @internal
      */
     constructor(init: V, options: MotionValueOptions = {}) {
         this.setCurrent(init)
@@ -258,8 +256,6 @@ export class MotionValue<V = any> {
 
     /**
      * Attaches a passive effect to the `MotionValue`.
-     *
-     * @internal
      */
     attach(passiveEffect: PassiveEffect<V>, stopPassiveEffect: VoidFunction) {
         this.passiveEffect = passiveEffect
@@ -399,8 +395,6 @@ export class MotionValue<V = any> {
      * ```
      *
      * @param animation - A function that starts the provided animation
-     *
-     * @internal
      */
     start(startAnimation: StartAnimation) {
         this.stop()
