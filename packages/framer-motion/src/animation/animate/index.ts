@@ -4,10 +4,10 @@ import type {
     DOMKeyframesDefinition,
     AnimationOptions as DynamicAnimationOptions,
     ElementOrSelector,
-    GroupPlaybackControls,
     MotionValue,
     ValueAnimationTransition,
 } from "motion-dom"
+import { GroupPlaybackControls } from "motion-dom"
 import { GenericKeyframesTarget } from "../../types"
 import {
     AnimationSequence,

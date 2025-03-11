@@ -5,8 +5,7 @@ import {
     time,
     type MotionValue,
 } from "motion-dom"
-import { warnOnce } from "motion-utils"
-import { SubscriptionManager } from "../../../motion-utils/src/subscription-manager"
+import { SubscriptionManager, warnOnce } from "motion-utils"
 import {
     MotionConfigContext,
     ReducedMotionConfig,

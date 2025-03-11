@@ -3,7 +3,10 @@ import { addUniqueItem } from "motion-utils"
 import { getWillChangeName } from "./get-will-change-name"
 import { WillChange } from "./types"
 
-export class WillChangeMotionValue extends MotionValue implements WillChange {
+export class WillChangeMotionValue
+    extends MotionValue<string>
+    implements WillChange
+{
     private values: string[] = []
 
     add(name: string) {

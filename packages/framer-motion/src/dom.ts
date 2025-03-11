@@ -1,9 +1,13 @@
 export {
+    cancelFrame,
+    frame,
+    frameData,
     hover,
     isDragActive,
     MotionValue,
     motionValue,
     press,
+    time,
 } from "motion-dom"
 export { invariant, noop, progress } from "motion-utils"
 
@@ -44,8 +48,6 @@ export { spring } from "./animation/generators/spring"
  * Utils
  */
 export { stagger } from "./animation/utils/stagger"
-export * from "./frameloop"
-export { time } from "./frameloop/sync-time"
 export { clamp } from "./utils/clamp"
 export { delayInSeconds as delay, DelayedFunction } from "./utils/delay"
 export * from "./utils/distance"
@@ -54,8 +56,3 @@ export { mix } from "./utils/mix"
 export { pipe } from "./utils/pipe"
 export { transform } from "./utils/transform"
 export { wrap } from "./utils/wrap"
-
-/**
- * Deprecated
- */
-export { cancelSync, sync } from "./frameloop/index-legacy"
