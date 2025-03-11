@@ -190,7 +190,6 @@ const debugTypes = createTypes("types/debug.d.ts", "dist/debug.d.ts")
 const animateTypes = createTypes("types/dom.d.ts", "dist/dom.d.ts")
 const animateMiniTypes = createTypes("types/dom-mini.d.ts", "dist/dom-mini.d.ts")
 const mTypes = createTypes("types/m.d.ts", "dist/m.d.ts")
-const threeTypes = createTypes("types/three-entry.d.ts", "dist/three.d.ts")
 
 // eslint-disable-next-line import/no-default-export
 export default [
@@ -212,5 +211,4 @@ export default [
     miniTypes,
     animateTypes,
     animateMiniTypes,
-    threeTypes,
 ]

@@ -12,7 +12,27 @@ export { Reorder } from "./components/Reorder"
 export * from "./dom"
 export { m } from "./render/components/m/proxy"
 export { motion } from "./render/components/motion/proxy"
-export * from "./three-entry"
+export type {
+    ResolvedValues,
+    ScrapeMotionValuesFromProps,
+} from "./render/types"
+
+export { addPointerEvent } from "./events/add-pointer-event"
+export { addPointerInfo } from "./events/event-info"
+export { animations } from "./motion/features/animations"
+export {
+    makeUseVisualState,
+    VisualState,
+} from "./motion/utils/use-visual-state"
+export { calcLength } from "./projection/geometry/delta-calc"
+export { createBox } from "./projection/geometry/models"
+export { filterProps } from "./render/dom/utils/filter-props"
+export { AnimationType } from "./render/utils/types"
+export { isBrowser } from "./utils/is-browser"
+export { useForceUpdate } from "./utils/use-force-update"
+export { useIsomorphicLayoutEffect } from "./utils/use-isomorphic-effect"
+export { useUnmountEffect } from "./utils/use-unmount-effect"
+export { isMotionValue } from "./value/utils/is-motion-value"
 
 /**
  * Features
@@ -29,7 +49,7 @@ export { useElementScroll } from "./value/scroll/use-element-scroll"
 export { useViewportScroll } from "./value/scroll/use-viewport-scroll"
 export { useMotionTemplate } from "./value/use-motion-template"
 export { useMotionValue } from "./value/use-motion-value"
-export { UseScrollOptions, useScroll } from "./value/use-scroll"
+export { useScroll, UseScrollOptions } from "./value/use-scroll"
 export { useSpring } from "./value/use-spring"
 export { useTime } from "./value/use-time"
 export { useTransform } from "./value/use-transform"
@@ -87,7 +107,7 @@ export { VisualElement } from "./render/VisualElement"
 export { MotionGlobalConfig } from "./utils/GlobalConfig"
 export { useAnimationFrame } from "./utils/use-animation-frame"
 export { Cycle, CycleState, useCycle } from "./utils/use-cycle"
-export { UseInViewOptions, useInView } from "./utils/use-in-view"
+export { useInView, UseInViewOptions } from "./utils/use-in-view"
 export {
     disableInstantTransitions,
     useInstantTransition,
@@ -123,8 +143,8 @@ export { MotionConfigProps } from "./components/MotionConfig"
 export { EventInfo } from "./events/types"
 export {
     DragElastic,
-    DragHandlers,
     DraggableProps,
+    DragHandlers,
 } from "./gestures/drag/types"
 export { LayoutProps } from "./motion/features/layout/types"
 export * from "./motion/features/types"
@@ -175,4 +195,4 @@ export { DeprecatedLayoutGroupContext } from "./context/DeprecatedLayoutGroupCon
 export { useInvertedScale as useDeprecatedInvertedScale } from "./value/use-inverted-scale"
 
 // Keep explict delay in milliseconds export for BC with Framer
-export { DelayedFunction, delay } from "./utils/delay"
+export { delay, DelayedFunction } from "./utils/delay"
