@@ -290,11 +290,12 @@ describe("Drag", () => {
             .trigger("pointerdown", 5, 5)
             .trigger("pointermove", 10, 10) // Gesture will start from first move past threshold
             .wait(50)
-            .trigger("pointermove", 100, 100, { force: true })
-            .wait(50)
-            .trigger("pointerup", { force: true })
-            .trigger("pointermove", 500, 500, { force: true })
+            .trigger("pointermove", 200, 200, { force: true })
             .wait(100)
+            .trigger("pointerup", { force: true, isPrimary: true })
+            .wait(50)
+            .trigger("pointermove", 500, 500, { force: true })
+            .wait(200)
             .get("#box")
             .should(([$box]: any) => {
                 const { left, top, right, bottom } =

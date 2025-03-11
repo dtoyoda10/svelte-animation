@@ -18,6 +18,7 @@ import { eachAxis } from "../../projection/utils/each-axis"
 import { measurePageBox } from "../../projection/utils/measure"
 import type { VisualElement } from "../../render/VisualElement"
 import { Transition } from "../../types"
+import { getContextWindow } from "../../utils/get-context-window"
 import { isRefObject } from "../../utils/is-ref-object"
 import { mixNumber } from "../../utils/mix/number"
 import { percent } from "../../value/types/numbers/units"
@@ -33,7 +34,6 @@ import {
     rebaseAxisConstraints,
     resolveDragElastic,
 } from "./utils/constraints"
-
 export const elementDragControls = new WeakMap<
     VisualElement,
     VisualElementDragControls
@@ -229,6 +229,7 @@ export class VisualElementDragControls {
             {
                 transformPagePoint: this.visualElement.getTransformPagePoint(),
                 dragSnapToOrigin,
+                contextWindow: getContextWindow(this.visualElement),
             }
         )
     }
