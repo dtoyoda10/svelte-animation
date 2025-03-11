@@ -1,11 +1,10 @@
-import { RefObject } from "react"
-import { motionValue } from "."
-import { useConstant } from "../utils/use-constant"
-import { useEffect } from "react"
-import { useIsomorphicLayoutEffect } from "../three-entry"
 import { warning } from "motion-utils"
+import { RefObject, useEffect } from "react"
+import { motionValue } from "."
 import { scroll } from "../render/dom/scroll"
 import { ScrollInfoOptions } from "../render/dom/scroll/types"
+import { useConstant } from "../utils/use-constant"
+import { useIsomorphicLayoutEffect } from "../utils/use-isomorphic-effect"
 
 export interface UseScrollOptions
     extends Omit<ScrollInfoOptions, "container" | "target"> {
@@ -45,7 +44,16 @@ export function useScroll({
         refWarning("container", container)
 
         return scroll(
-            (_progress, { x, y }) => {
+            (
+                _progress: number,
+                {
+                    x,
+                    y,
+                }: {
+                    x: { current: number; progress: number }
+                    y: { current: number; progress: number }
+                }
+            ) => {
                 values.scrollX.set(x.current)
                 values.scrollXProgress.set(x.progress)
                 values.scrollY.set(y.current)
