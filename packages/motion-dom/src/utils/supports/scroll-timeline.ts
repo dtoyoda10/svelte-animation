@@ -15,6 +15,6 @@ declare class ScrollTimeline implements ProgressTimeline {
     cancel?: VoidFunction
 }
 
-export const supportsScrollTimeline = memo(
+export const supportsScrollTimeline = /* @__PURE__ */ memo(
     () => window.ScrollTimeline !== undefined
 )

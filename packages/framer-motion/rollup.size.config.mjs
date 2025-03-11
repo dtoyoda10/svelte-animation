@@ -95,11 +95,11 @@ const domMax = Object.assign({}, es, {
 
 // eslint-disable-next-line import/no-default-export
 export default [
-    motion,
-    m,
+    // motion,
+    // m,
     sizeAnimate,
-    sizeScroll,
-    sizeAnimateMini,
-    domAnimation,
-    domMax,
+    // sizeScroll,
+    // domAnimation,
+    // domMax,
+    // sizeAnimateMini,
 ]
