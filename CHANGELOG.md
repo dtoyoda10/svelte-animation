@@ -4,7 +4,11 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
-## [12.4.14] 2025-03-11
+## [12.5.0] 2025-03-11
+
+### Added
+
+-   Added `motionValue` to vanilla JS entrypoint.
 
 ### Removed
 
