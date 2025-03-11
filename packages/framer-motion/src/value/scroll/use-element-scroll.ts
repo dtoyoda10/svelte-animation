@@ -1,5 +1,5 @@
+import { warnOnce } from "motion-utils"
 import { RefObject } from "react"
-import { warnOnce } from "../../utils/warn-once"
 import { useScroll } from "../use-scroll"
 
 /**

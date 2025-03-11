@@ -1,10 +1,10 @@
+import { MotionValue } from "motion-dom"
 import { AnimationDefinition } from "../animation/types"
 import { ReducedMotionConfig } from "../context/MotionConfigContext"
 import type { PresenceContextProps } from "../context/PresenceContext"
 import { MotionProps } from "../motion/types"
 import { VisualState } from "../motion/utils/use-visual-state"
 import type { Axis, Box } from "../projection/geometry/types"
-import { MotionValue } from "../value"
 import type { VisualElement } from "./VisualElement"
 
 export type GenericValues = {

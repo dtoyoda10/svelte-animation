@@ -1,4 +1,4 @@
-import { velocityPerSecond } from "../velocity-per-second"
+import { velocityPerSecond } from "motion-utils"
 
 test("velocityPerSecond", () => {
     expect(velocityPerSecond(0.835, 16.7)).toBe(50)

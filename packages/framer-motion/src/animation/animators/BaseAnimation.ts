@@ -1,9 +1,9 @@
-import {
+import type {
     AnimationPlaybackControls,
     RepeatType,
     ValueAnimationOptions,
 } from "motion-dom"
-import { time } from "../../frameloop/sync-time"
+import { time } from "motion-dom"
 import {
     KeyframeResolver,
     ResolvedKeyframes,

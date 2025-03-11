@@ -1,5 +1,5 @@
+import { warnOnce } from "motion-utils"
 import { MotionProps } from "../../motion/types"
-import { warnOnce } from "../../utils/warn-once"
 import { DOMMotionComponents } from "../dom/types"
 import type { createMotionComponent } from "./motion/create"
 

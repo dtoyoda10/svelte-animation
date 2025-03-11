@@ -1,4 +1,10 @@
-export { hover, isDragActive, press } from "motion-dom"
+export {
+    hover,
+    isDragActive,
+    MotionValue,
+    motionValue,
+    press,
+} from "motion-dom"
 export { invariant, noop, progress } from "motion-utils"
 
 export type * from "motion-dom"
@@ -8,8 +14,6 @@ export { animateMini } from "./animation/animators/waapi/animate-style"
 export { scroll } from "./render/dom/scroll"
 export { scrollInfo } from "./render/dom/scroll/track"
 export { inView } from "./render/dom/viewport"
-export { MotionValue, motionValue } from "./value"
-export type { PassiveEffect, Subscriber } from "./value"
 
 /**
  * Types
@@ -43,7 +47,7 @@ export { stagger } from "./animation/utils/stagger"
 export * from "./frameloop"
 export { time } from "./frameloop/sync-time"
 export { clamp } from "./utils/clamp"
-export { DelayedFunction, delayInSeconds as delay } from "./utils/delay"
+export { delayInSeconds as delay, DelayedFunction } from "./utils/delay"
 export * from "./utils/distance"
 export * from "./utils/interpolate"
 export { mix } from "./utils/mix"

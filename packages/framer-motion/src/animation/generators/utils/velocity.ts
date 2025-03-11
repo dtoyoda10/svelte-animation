@@ -1,4 +1,4 @@
-import { velocityPerSecond } from "../../../utils/velocity-per-second"
+import { velocityPerSecond } from "motion-utils"
 
 const velocitySampleDuration = 5 // ms
 

@@ -1,6 +1,6 @@
+import { frame, frameData } from "motion-dom"
+import { MotionGlobalConfig } from "motion-utils"
 import { recordStats } from ".."
-import { frame, frameData } from "../../frameloop"
-import { MotionGlobalConfig } from "../../utils/GlobalConfig"
 
 MotionGlobalConfig.useManualTiming = true
 

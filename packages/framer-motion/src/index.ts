@@ -66,6 +66,7 @@ export { useReducedMotionConfig } from "./utils/reduced-motion/use-reduced-motio
 /**
  * Utils
  */
+export { MotionGlobalConfig } from "motion-utils"
 export { AcceleratedAnimation } from "./animation/animators/AcceleratedAnimation"
 export { animateValue } from "./animation/animators/MainThreadAnimation"
 export { animationControls } from "./animation/hooks/animation-controls"
@@ -104,7 +105,6 @@ export { useResetProjection } from "./projection/use-reset-projection"
 export { buildTransform } from "./render/html/utils/build-transform"
 export { visualElementStore } from "./render/store"
 export { VisualElement } from "./render/VisualElement"
-export { MotionGlobalConfig } from "./utils/GlobalConfig"
 export { useAnimationFrame } from "./utils/use-animation-frame"
 export { Cycle, CycleState, useCycle } from "./utils/use-cycle"
 export { useInView, UseInViewOptions } from "./utils/use-in-view"

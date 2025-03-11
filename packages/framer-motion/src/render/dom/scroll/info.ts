@@ -1,5 +1,4 @@
-import { progress } from "motion-utils"
-import { velocityPerSecond } from "../../../utils/velocity-per-second"
+import { progress, velocityPerSecond } from "motion-utils"
 import { AxisScrollInfo, ScrollInfo } from "./types"
 
 /**

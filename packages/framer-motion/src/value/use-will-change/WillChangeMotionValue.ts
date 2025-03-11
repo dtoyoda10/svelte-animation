@@ -1,7 +1,7 @@
-import { MotionValue } from ".."
-import { WillChange } from "./types"
+import { MotionValue } from "motion-dom"
+import { addUniqueItem } from "motion-utils"
 import { getWillChangeName } from "./get-will-change-name"
-import { addUniqueItem } from "../../utils/array"
+import { WillChange } from "./types"
 
 export class WillChangeMotionValue extends MotionValue implements WillChange {
     private values: string[] = []

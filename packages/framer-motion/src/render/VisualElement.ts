@@ -1,10 +1,17 @@
 import {
+    cancelFrame,
+    frame,
+    motionValue,
+    time,
+    type MotionValue,
+} from "motion-dom"
+import { warnOnce } from "motion-utils"
+import { SubscriptionManager } from "../../../motion-utils/src/subscription-manager"
+import {
     MotionConfigContext,
     ReducedMotionConfig,
 } from "../context/MotionConfigContext"
 import type { PresenceContextProps } from "../context/PresenceContext"
-import { cancelFrame, frame } from "../frameloop"
-import { time } from "../frameloop/sync-time"
 import { featureDefinitions } from "../motion/features/definitions"
 import { Feature } from "../motion/features/Feature"
 import { FeatureDefinitions } from "../motion/features/types"
@@ -20,9 +27,6 @@ import {
     hasReducedMotionListener,
     prefersReducedMotion,
 } from "../utils/reduced-motion/state"
-import { SubscriptionManager } from "../utils/subscription-manager"
-import { warnOnce } from "../utils/warn-once"
-import { motionValue, MotionValue } from "../value"
 import { complex } from "../value/types/complex"
 import { isMotionValue } from "../value/utils/is-motion-value"
 import { getAnimatableNone } from "./dom/value-types/animatable-none"

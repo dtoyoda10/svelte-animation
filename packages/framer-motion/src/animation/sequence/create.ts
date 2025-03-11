@@ -1,3 +1,4 @@
+import type { MotionValue } from "motion-dom"
 import {
     AnimationScope,
     createGeneratorEasing,
@@ -13,7 +14,6 @@ import { Easing } from "../../easing/types"
 import { getEasingForSegment } from "../../easing/utils/get-easing-for-segment"
 import { defaultOffset } from "../../utils/offsets/default"
 import { fillOffset } from "../../utils/offsets/fill"
-import type { MotionValue } from "../../value"
 import { isMotionValue } from "../../value/utils/is-motion-value"
 import { resolveSubjects } from "../animate/resolve-subjects"
 import {

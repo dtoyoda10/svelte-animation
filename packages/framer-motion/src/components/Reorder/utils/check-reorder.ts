@@ -1,4 +1,4 @@
-import { moveItem } from "../../../utils/array"
+import { moveItem } from "motion-utils"
 import { mixNumber } from "../../../utils/mix/number"
 import { ItemData } from "../types"
 

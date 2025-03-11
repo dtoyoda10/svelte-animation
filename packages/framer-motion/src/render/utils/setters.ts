@@ -1,6 +1,6 @@
+import { motionValue } from "motion-dom"
 import { TargetAndTransition, TargetResolver } from "../../types"
 import { resolveFinalValueInKeyframes } from "../../utils/resolve-value"
-import { motionValue } from "../../value"
 import type { VisualElement } from "../VisualElement"
 import { resolveVariant } from "./resolve-dynamic-variants"
 

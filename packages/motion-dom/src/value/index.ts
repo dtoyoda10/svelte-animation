@@ -1,9 +1,10 @@
-import { AnimationPlaybackControls, TransformProperties } from "motion-dom"
+import { SubscriptionManager, velocityPerSecond, warnOnce } from "motion-utils"
+import {
+    AnimationPlaybackControls,
+    TransformProperties,
+} from "../animation/types"
 import { frame } from "../frameloop"
 import { time } from "../frameloop/sync-time"
-import { SubscriptionManager } from "../utils/subscription-manager"
-import { velocityPerSecond } from "../utils/velocity-per-second"
-import { warnOnce } from "../utils/warn-once"
 
 export type Transformer<T> = (v: T) => T
 

@@ -1,3 +1,4 @@
+import { MotionValue } from "motion-dom"
 import { CSSProperties } from "react"
 import { AnimationControls } from "../animation/types"
 import { DraggableProps } from "../gestures/drag/types"
@@ -16,7 +17,6 @@ import {
     Transition,
     Variants,
 } from "../types"
-import { MotionValue } from "../value"
 import { LayoutProps } from "./features/layout/types"
 import { ViewportProps } from "./features/viewport/types"
 

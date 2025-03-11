@@ -1,30 +1,31 @@
 import {
     AnimationPlaybackControls,
+    cancelFrame,
+    frame,
+    frameData,
+    frameSteps,
     getValueTransition,
+    microtask,
+    time,
     ValueAnimationOptions,
+    type Process,
 } from "motion-dom"
 import { noop } from "motion-utils"
+import { activeAnimations } from "../../../../motion-dom/src/stats/animation-count"
+import { statsBuffer } from "../../../../motion-dom/src/stats/buffer"
+import { SubscriptionManager } from "../../../../motion-utils/src/subscription-manager"
 import { animateSingleValue } from "../../animation/animate/single-value"
 import { getOptimisedAppearId } from "../../animation/optimized-appear/get-appear-id"
-import { frameData } from "../../dom"
-import { cancelFrame, frame } from "../../frameloop"
-import { frameSteps } from "../../frameloop/frame"
-import { microtask } from "../../frameloop/microtask"
-import { time } from "../../frameloop/sync-time"
-import { Process } from "../../frameloop/types"
 import { MotionStyle } from "../../motion/types"
 import { HTMLVisualElement } from "../../projection"
 import { isSVGElement } from "../../render/dom/utils/is-svg-element"
 import { ResolvedValues } from "../../render/types"
 import { FlatTree } from "../../render/utils/flat-tree"
 import { VisualElement } from "../../render/VisualElement"
-import { activeAnimations } from "../../stats/animation-count"
-import { statsBuffer } from "../../stats/buffer"
 import { Transition } from "../../types"
 import { clamp } from "../../utils/clamp"
 import { delay } from "../../utils/delay"
 import { mixNumber } from "../../utils/mix/number"
-import { SubscriptionManager } from "../../utils/subscription-manager"
 import { resolveMotionValue } from "../../value/utils/resolve-motion-value"
 import { mixValues } from "../animation/mix-values"
 import { copyAxisDeltaInto, copyBoxInto } from "../geometry/copy"

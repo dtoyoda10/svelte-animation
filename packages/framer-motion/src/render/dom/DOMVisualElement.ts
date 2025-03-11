@@ -1,10 +1,10 @@
-import { DOMVisualElementOptions } from "../dom/types"
-import { VisualElement } from "../VisualElement"
+import { MotionValue } from "motion-dom"
 import { MotionProps, MotionStyle } from "../../motion/types"
-import { MotionValue } from "../../value"
-import { HTMLRenderState } from "../html/types"
-import { DOMKeyframesResolver } from "./DOMKeyframesResolver"
 import { isMotionValue } from "../../value/utils/is-motion-value"
+import { DOMVisualElementOptions } from "../dom/types"
+import { HTMLRenderState } from "../html/types"
+import { VisualElement } from "../VisualElement"
+import { DOMKeyframesResolver } from "./DOMKeyframesResolver"
 
 export abstract class DOMVisualElement<
     Instance extends HTMLElement | SVGElement = HTMLElement,
@@ -50,7 +50,7 @@ export abstract class DOMVisualElement<
         if (isMotionValue(children)) {
             this.childSubscription = children.on("change", (latest) => {
                 if (this.current) {
-                    this.current.textContent = `${latest}`;
+                    this.current.textContent = `${latest}`
                 }
             })
         }
