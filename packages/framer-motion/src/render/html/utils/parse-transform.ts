@@ -37,6 +37,9 @@ const rebaseAngle = (angle: number) => {
 
 const rotateZ = rotate
 
+const scaleX = (v: number[]) => Math.sqrt(v[0] * v[0] + v[1] * v[1])
+const scaleY = (v: number[]) => Math.sqrt(v[4] * v[4] + v[5] * v[5])
+
 const matrix3dParsers: MatrixParsers = {
     x: 12,
     y: 13,
@@ -44,12 +47,9 @@ const matrix3dParsers: MatrixParsers = {
     translateX: 12,
     translateY: 13,
     translateZ: 14,
-    scaleX: (v) => Math.sqrt(v[0] * v[0] + v[1] * v[1]),
-    scaleY: (v) => Math.sqrt(v[4] * v[4] + v[5] * v[5]),
-    scale: (v) =>
-        (Math.sqrt(v[0] * v[0] + v[1] * v[1]) +
-            Math.sqrt(v[4] * v[4] + v[5] * v[5])) /
-        2,
+    scaleX,
+    scaleY,
+    scale: (v) => (scaleX(v) + scaleY(v)) / 2,
     rotateX: (v) => rebaseAngle(radToDeg(Math.atan2(v[6], v[5]))),
     rotateY: (v) => rebaseAngle(radToDeg(Math.atan2(-v[2], v[0]))),
     rotateZ,
@@ -93,13 +93,9 @@ export function parseValueFromTransform(
     const valueParser = parsers[name]
     const values = match[1].split(",").map(convertTransformToNumber)
 
-    if (typeof valueParser === "function") {
-        return valueParser(values)
-    } else if (typeof valueParser === "number") {
-        return values[valueParser]
-    }
-
-    return 0
+    return typeof valueParser === "function"
+        ? valueParser(values)
+        : values[valueParser]
 }
 
 export const readTransformValue = (instance: HTMLElement, name: string) => {
