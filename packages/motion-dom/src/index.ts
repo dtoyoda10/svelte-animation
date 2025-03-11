@@ -29,6 +29,11 @@ export * from "./gestures/utils/is-primary-pointer"
 
 export * from "./render/svg/types"
 
+export * from "./stats"
+export * from "./stats/animation-count"
+export * from "./stats/buffer"
+export * from "./stats/types"
+
 export * from "./utils/is-bezier-definition"
 export * from "./utils/resolve-elements"
 export * from "./utils/supports/flags"

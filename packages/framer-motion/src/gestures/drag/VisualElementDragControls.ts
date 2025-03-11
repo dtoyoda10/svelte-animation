@@ -1,10 +1,9 @@
-import { setDragLock } from "motion-dom"
+import { frame, setDragLock } from "motion-dom"
 import { invariant } from "motion-utils"
 import { animateMotionValue } from "../../animation/interfaces/motion-value"
 import { addDomEvent } from "../../events/add-dom-event"
 import { addPointerEvent } from "../../events/add-pointer-event"
 import { extractEventInfo } from "../../events/event-info"
-import { frame } from "../../frameloop"
 import { MotionProps } from "../../motion/types"
 import {
     convertBoundingBoxToBox,

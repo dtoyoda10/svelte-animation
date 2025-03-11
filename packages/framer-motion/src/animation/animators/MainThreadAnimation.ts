@@ -1,4 +1,5 @@
 import {
+    activeAnimations,
     calcGeneratorDuration,
     isGenerator,
     ValueAnimationOptions,
@@ -8,7 +9,6 @@ import {
     millisecondsToSeconds,
     secondsToMilliseconds,
 } from "motion-utils"
-import { activeAnimations } from "../../../../motion-dom/src/stats/animation-count"
 import {
     KeyframeResolver as DefaultKeyframeResolver,
     ResolvedKeyframes,

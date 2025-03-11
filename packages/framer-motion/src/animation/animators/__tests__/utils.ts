@@ -1,5 +1,4 @@
-import { frameData } from "../../../frameloop"
-import { time } from "../../../frameloop/sync-time"
+import { frameData, time } from "motion-dom"
 import { KeyframeGenerator } from "../../generators/types"
 
 export const syncDriver = (interval = 10) => {

@@ -1,6 +1,8 @@
-import { mapEasingToNativeEasing } from "motion-dom"
-import { activeAnimations } from "../../../../../motion-dom/src/stats/animation-count"
-import { statsBuffer } from "../../../../../motion-dom/src/stats/buffer"
+import {
+    activeAnimations,
+    mapEasingToNativeEasing,
+    statsBuffer,
+} from "motion-dom"
 import { NativeAnimationOptions } from "./types"
 
 export function startWaapiAnimation(

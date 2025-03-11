@@ -1,6 +1,5 @@
-import { press } from "motion-dom"
+import { frame, press } from "motion-dom"
 import { extractEventInfo } from "../events/event-info"
-import { frame } from "../frameloop"
 import { Feature } from "../motion/features/Feature"
 import { VisualElement } from "../render/VisualElement"
 

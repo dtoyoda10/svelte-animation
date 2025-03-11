@@ -1,4 +1,5 @@
 import {
+    activeAnimations,
     AnimationPlaybackControls,
     cancelFrame,
     frame,
@@ -6,14 +7,12 @@ import {
     frameSteps,
     getValueTransition,
     microtask,
+    statsBuffer,
     time,
     ValueAnimationOptions,
     type Process,
 } from "motion-dom"
-import { noop } from "motion-utils"
-import { activeAnimations } from "../../../../motion-dom/src/stats/animation-count"
-import { statsBuffer } from "../../../../motion-dom/src/stats/buffer"
-import { SubscriptionManager } from "../../../../motion-utils/src/subscription-manager"
+import { noop, SubscriptionManager } from "motion-utils"
 import { animateSingleValue } from "../../animation/animate/single-value"
 import { getOptimisedAppearId } from "../../animation/optimized-appear/get-appear-id"
 import { MotionStyle } from "../../motion/types"

@@ -1,8 +1,8 @@
-import { frame, cancelFrame, frameData } from "../../../frameloop"
+import { cancelFrame, frame, frameData } from "motion-dom"
 import { resize } from "../resize"
 import { createScrollInfo } from "./info"
 import { createOnScrollHandler } from "./on-scroll-handler"
-import { OnScrollInfo, OnScrollHandler, ScrollInfoOptions } from "./types"
+import { OnScrollHandler, OnScrollInfo, ScrollInfoOptions } from "./types"
 
 const scrollListeners = new WeakMap<Element, VoidFunction>()
 const resizeListeners = new WeakMap<Element, VoidFunction>()

@@ -1,4 +1,4 @@
-import { MotionValue, SpringOptions } from "motion-dom"
+import { MotionValue, SpringOptions, frame } from "motion-dom"
 import { noop } from "motion-utils"
 import { useContext, useInsertionEffect, useRef } from "react"
 import {
@@ -6,7 +6,6 @@ import {
     animateValue,
 } from "../animation/animators/MainThreadAnimation"
 import { MotionConfigContext } from "../context/MotionConfigContext"
-import { frame } from "../frameloop"
 import { useConstant } from "../utils/use-constant"
 import { useIsomorphicLayoutEffect } from "../utils/use-isomorphic-effect"
 import { useMotionValue } from "./use-motion-value"
