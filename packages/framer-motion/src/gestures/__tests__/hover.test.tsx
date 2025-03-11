@@ -1,3 +1,4 @@
+import { motionValue } from "motion-dom"
 import { frame, motion } from "../../"
 import {
     pointerDown,
@@ -5,7 +6,6 @@ import {
     pointerLeave,
     render,
 } from "../../../jest.setup"
-import { motionValue } from "../../value"
 import { nextFrame } from "./utils"
 
 describe("hover", () => {

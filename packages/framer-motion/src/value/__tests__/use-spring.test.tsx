@@ -1,5 +1,5 @@
+import { motionValue, MotionValue } from "motion-dom"
 import { useEffect } from "react"
-import { motionValue, MotionValue } from ".."
 import { motion } from "../../"
 import { render } from "../../../jest.setup"
 import { syncDriver } from "../../animation/animators/__tests__/utils"

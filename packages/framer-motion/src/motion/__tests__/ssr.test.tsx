@@ -1,3 +1,4 @@
+import { motionValue } from "motion-dom"
 import { ForwardedRef, forwardRef, Fragment, useRef, useState } from "react"
 import { renderToStaticMarkup, renderToString } from "react-dom/server"
 import { useMotionValue } from "../../"
@@ -5,7 +6,6 @@ import { AnimatePresence } from "../../components/AnimatePresence"
 import { Reorder } from "../../components/Reorder"
 import { motion } from "../../render/components/motion"
 import { motion as motionProxy } from "../../render/components/motion/proxy"
-import { motionValue } from "../../value"
 
 const MotionFragment = motion.create(Fragment)
 

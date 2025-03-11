@@ -1,4 +1,4 @@
-import { motionValue } from "../.."
+import { motionValue } from "motion-dom"
 import { isMotionValue } from "../is-motion-value"
 
 describe("isMotionValue", () => {

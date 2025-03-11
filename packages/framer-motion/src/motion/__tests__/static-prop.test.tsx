@@ -1,7 +1,7 @@
-import { render } from "../../../jest.setup"
-import { motion, useMotionValue } from "../.."
+import { motionValue } from "motion-dom"
 import { useEffect } from "react"
-import { motionValue } from "../../value"
+import { motion, useMotionValue } from "../.."
+import { render } from "../../../jest.setup"
 import { MotionConfig } from "../../components/MotionConfig"
 import { globalProjectionState } from "../../projection/node/state"
 

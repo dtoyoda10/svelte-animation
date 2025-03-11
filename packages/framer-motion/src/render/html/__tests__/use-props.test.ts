@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react"
-import { motionValue } from "../../../value"
+import { motionValue } from "motion-dom"
 import { useHTMLProps } from "../use-props"
 
 describe("HTML useProps", () => {

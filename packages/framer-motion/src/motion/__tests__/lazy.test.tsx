@@ -1,6 +1,6 @@
+import { motionValue } from "motion-dom"
+import { LazyMotion, domAnimation, domMax, m, motion } from "../.."
 import { render } from "../../../jest.setup"
-import { m, motion, LazyMotion, domAnimation, domMax } from "../.."
-import { motionValue } from "../../value"
 
 describe("Lazy feature loading", () => {
     test("Doesn't animate without loaded features", async () => {

@@ -1,11 +1,11 @@
-import { render } from "../../../../jest.setup"
+import { motionValue, MotionValue } from "motion-dom"
 import { useEffect } from "react"
-import { motion, MotionGlobalConfig } from "../../.."
-import { animate } from ".."
-import { useMotionValue } from "../../../value/use-motion-value"
-import { motionValue, MotionValue } from "../../../value"
-import { syncDriver } from "../../animators/__tests__/utils"
 import * as THREE from "three"
+import { animate } from ".."
+import { motion, MotionGlobalConfig } from "../../.."
+import { render } from "../../../../jest.setup"
+import { useMotionValue } from "../../../value/use-motion-value"
+import { syncDriver } from "../../animators/__tests__/utils"
 
 const duration = 0.001
 
