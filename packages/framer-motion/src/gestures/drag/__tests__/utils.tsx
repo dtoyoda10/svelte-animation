@@ -41,7 +41,7 @@ export const drag = (element: any, triggerElement?: any) => {
             pos.y = y
 
             await React.act(async () => {
-                pointerMove(element)
+                pointerMove(document.body)
                 await dragFrame.postRender()
             })
 

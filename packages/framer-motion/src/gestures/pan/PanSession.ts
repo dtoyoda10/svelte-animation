@@ -1,4 +1,4 @@
-import { capturePointer, isPrimaryPointer } from "motion-dom"
+import { isPrimaryPointer } from "motion-dom"
 import { millisecondsToSeconds, secondsToMilliseconds } from "motion-utils"
 import { addPointerEvent } from "../../events/add-pointer-event"
 import { extractEventInfo } from "../../events/event-info"
@@ -96,6 +96,7 @@ interface PanSessionHandlers {
 interface PanSessionOptions {
     transformPagePoint?: TransformPoint
     dragSnapToOrigin?: boolean
+    contextWindow?: (Window & typeof globalThis) | null
 }
 
 interface TimestampedPoint extends Point {
@@ -110,8 +111,6 @@ export class PanSession {
      * @internal
      */
     private history: TimestampedPoint[]
-
-    private index: number
 
     /**
      * @internal
@@ -150,10 +149,19 @@ export class PanSession {
      */
     private dragSnapToOrigin: boolean
 
+    /**
+     * @internal
+     */
+    private contextWindow: PanSessionOptions["contextWindow"] = window
+
     constructor(
         event: PointerEvent,
         handlers: Partial<PanSessionHandlers>,
-        { transformPagePoint, dragSnapToOrigin = false }: PanSessionOptions = {}
+        {
+            transformPagePoint,
+            contextWindow,
+            dragSnapToOrigin = false,
+        }: PanSessionOptions = {}
     ) {
         // If we have more than one touch, don't start detecting this gesture
         if (!isPrimaryPointer(event)) return
@@ -161,6 +169,7 @@ export class PanSession {
         this.dragSnapToOrigin = dragSnapToOrigin
         this.handlers = handlers
         this.transformPagePoint = transformPagePoint
+        this.contextWindow = contextWindow || window
 
         const info = extractEventInfo(event)
         const initialInfo = transformPoint(info, this.transformPagePoint)
@@ -174,42 +183,21 @@ export class PanSession {
         onSessionStart &&
             onSessionStart(event, getPanInfo(initialInfo, this.history))
 
-        capturePointer(event, "set")
-
         this.removeListeners = pipe(
             addPointerEvent(
-                event.currentTarget!,
+                this.contextWindow,
                 "pointermove",
                 this.handlePointerMove
             ),
             addPointerEvent(
-                event.currentTarget!,
+                this.contextWindow,
                 "pointerup",
                 this.handlePointerUp
             ),
             addPointerEvent(
-                event.currentTarget!,
+                this.contextWindow,
                 "pointercancel",
                 this.handlePointerUp
-            ),
-            addPointerEvent(
-                event.currentTarget!,
-                "lostpointercapture",
-                (lostPointerEvent, lostPointerInfo) => {
-                    const index = getElementIndex(
-                        lostPointerEvent.currentTarget as Element
-                    )
-
-                    /**
-                     * If the pointer has lost capture because it's moved in the DOM
-                     * then we need to re-capture it.
-                     */
-                    if (index !== this.index) {
-                        capturePointer(lostPointerEvent, "set")
-                    } else {
-                        this.handlePointerUp(lostPointerEvent, lostPointerInfo)
-                    }
-                }
             )
         )
     }
@@ -243,20 +231,6 @@ export class PanSession {
     }
 
     private handlePointerMove = (event: PointerEvent, info: EventInfo) => {
-        this.index = getElementIndex(event.currentTarget as Element)
-
-        if (
-            event.target instanceof Element &&
-            event.target.hasPointerCapture &&
-            event.pointerId !== undefined
-        ) {
-            try {
-                if (!event.target.hasPointerCapture(event.pointerId)) {
-                    return
-                }
-            } catch (e) {}
-        }
-
         this.lastMoveEvent = event
         this.lastMoveEventInfo = transformPoint(info, this.transformPagePoint)
 
@@ -265,8 +239,6 @@ export class PanSession {
     }
 
     private handlePointerUp = (event: PointerEvent, info: EventInfo) => {
-        capturePointer(event, "release")
-
         this.end()
 
         const { onEnd, onSessionEnd, resumeAnimation } = this.handlers
@@ -275,8 +247,7 @@ export class PanSession {
         if (!(this.lastMoveEvent && this.lastMoveEventInfo)) return
 
         const panInfo = getPanInfo(
-            event.type === "pointercancel" ||
-                event.type === "lostpointercapture"
+            event.type === "pointercancel"
                 ? this.lastMoveEventInfo
                 : transformPoint(info, this.transformPagePoint),
             this.history
@@ -370,9 +341,4 @@ function getVelocity(history: TimestampedPoint[], timeDelta: number): Point {
     }
 
     return currentVelocity
-}
-
-function getElementIndex(element: Element) {
-    if (!element.parentNode) return -1
-    return Array.from(element.parentNode.children).indexOf(element)
 }

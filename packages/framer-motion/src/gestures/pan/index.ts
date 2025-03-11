@@ -2,6 +2,7 @@ import { noop } from "motion-utils"
 import { addPointerEvent } from "../../events/add-pointer-event"
 import { frame } from "../../frameloop"
 import { Feature } from "../../motion/features/Feature"
+import { getContextWindow } from "../../utils/get-context-window"
 import { PanInfo, PanSession } from "./PanSession"
 
 type PanEventHandler = (event: PointerEvent, info: PanInfo) => void
@@ -23,6 +24,7 @@ export class PanGesture extends Feature<Element> {
             this.createPanHandlers(),
             {
                 transformPagePoint: this.node.getTransformPagePoint(),
+                contextWindow: getContextWindow(this.node),
             }
         )
     }
