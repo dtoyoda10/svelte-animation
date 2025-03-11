@@ -4,6 +4,12 @@ Motion adheres to [Semantic Versioning](http://semver.org/).
 
 Undocumented APIs should be considered internal and may change without warning.
 
+## [12.4.13] 2025-03-11
+
+### Fixed
+
+-   Fixed reading initial transform values from elements.
+
 ## [12.4.12] 2025-03-11
 
 ### Fixed
