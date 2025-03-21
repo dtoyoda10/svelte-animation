@@ -6,6 +6,9 @@ labels: bug
 assignees: ""
 ---
 
+> [!NOTE]
+> **Motion for Vue issues:** Please open in the [Motion for Vue repo](https://github.com/motiondivision/motion-vue).
+
 **1. Read the [FAQs](#faqs) 👇**
 
 **2. Describe the bug**
